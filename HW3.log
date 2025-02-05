@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  5 FEB 2025 11:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  5 FEB 2025 13:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -401,20 +401,20 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 75.
 (/Users/jnzapata/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 76.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 77.
 (/Users/jnzapata/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 ! Undefined control sequence.
-l.78 \#\#2. \#find: (\w
+l.79 \#\#2. \#find: (\w
                        +), (\w+), (.*) \#replace: \textbackslash2 
 Here is how much of TeX's memory you used:
- 10975 strings out of 475172
- 168952 string characters out of 5764998
+ 10980 strings out of 475172
+ 169017 string characters out of 5764998
  560825 words of memory out of 5000000
- 33828 multiletter control sequences out of 15000+600000
- 581229 words of font info for 57 fonts, out of 8000000 for 9000
+ 33832 multiletter control sequences out of 15000+600000
+ 584238 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 89i,6n,93p,346b,385s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,6n,93p,452b,430s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 !  ==> Fatal error occurred, no output PDF file produced!
