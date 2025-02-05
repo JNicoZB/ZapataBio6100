@@ -70,3 +70,4 @@ replace:(just replace)
 ```
 First, select de word NA and replace for 0. 
 Then, select characters other than: letters, digits 0 to 9 and / (to avoid replacing these symbols in the date column) and just replace.
+
