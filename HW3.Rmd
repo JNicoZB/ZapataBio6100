@@ -25,4 +25,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##7. #find: ^(\w{3})\w*,(\w{3})\w*,([\d\.]+),(\d+)$ #replace: \1\2, \4, \3
 
-##8. #find:
+##8. #find: NA #replace: 0
+##   #find: [^\w\s,] #replace: 
+##   #find: (\w+)\s+ 
