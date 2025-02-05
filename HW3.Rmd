@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##1. #find: [ \t]{2, } #replace: , 
+## 1. #find: [ \t]{2, } #replace: , 
 
 ##2. #find: (\w+), (\w+), (.*) #replace: \2 \1 \(\3\)
 
@@ -27,3 +27,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##8. #find: NA #replace: 0
 ##   #find: [^\w\s/0-9\t\n] #replace:(just replace) 
+```
+homework3
+```
