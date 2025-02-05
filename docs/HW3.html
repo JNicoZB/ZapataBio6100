@@ -278,50 +278,59 @@ $(document).ready(function () {
 <h3>1</h3>
 <pre><code> find: [ \t]{2, } 
  replace: , </code></pre>
-<p>Capture everything with two or more spaces. Replace with comma ###
-2</p>
+<p>Capture everything with two or more spaces. Replace with comma</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>2</h3>
 <pre><code> find: (\w+), (\w+), (.*) 
  replace: \2 \1 \(\3\)</code></pre>
-<p>capture every word that is separated by commas and any character
+<p>Capture every word that is separated by commas and any character
 except after the comma and the newline. change the order of the words (1
 and 2) and then add parentheses to the last characters (3 corresponding
 to the affiliation)</p>
 </div>
-<div id="section-1" class="section level3">
+<div id="section-2" class="section level3">
 <h3>3</h3>
 <pre><code> find: ^\s*(\d{4} .+?\.mp3)\s* 
  replace: \1\n</code></pre>
 <p>Capture all the words that we want in the first line. Replace for a
 line break for each</p>
 </div>
-<div id="section-2" class="section level3">
+<div id="section-3" class="section level3">
 <h3>4</h3>
 <pre><code> find: ^\s*(\d{4})\s(.+?)(\.mp3) 
  replace: \2_\1\3 </code></pre>
 <p>Choose the four digit number for each line. Move to the position that
 we want, before .mp3</p>
 </div>
-<div id="section-3" class="section level3">
+<div id="section-4" class="section level3">
 <h3>5</h3>
 <pre><code> find: (\w)\w+?,(\w+),[\d\.]+,(\d+) #replace: \1_\2,\3</code></pre>
+<p>Capture the first letter of the genus name, then the species name and
+the numerical value. Replace all the words of the genus word except for
+the first letter, and delete the numeric values with points.</p>
 </div>
-<div id="section-4" class="section level3">
+<div id="section-5" class="section level3">
 <h3>6</h3>
 <pre><code>find: (\w)\w+?,(\w{4})\w+?,[\d\.]+,(\d+) 
 replace: \1_\2,\3</code></pre>
 </div>
-<div id="section-5" class="section level3">
+<div id="section-6" class="section level3">
 <h3>7</h3>
 <pre><code>find: ^(\w{3})\w*,(\w{3})\w*,([\d\.]+),(\d+)$ 
 replace: \1\2, \4, \3</code></pre>
+<p>Capture the first four letters of the species name</p>
 </div>
-<div id="section-6" class="section level3">
+<div id="section-7" class="section level3">
 <h3>8</h3>
 <pre><code>find: NA 
 replace: 0
 
 find: [^\w\s/0-9\t\n] 
 replace:(just replace) </code></pre>
+<p>First, select de word NA and replace for 0. Then, select characters
+other than: letters, digits 0 to 9 and / (to avoid replacing these
+symbols in the date column) and just replace.</p>
 </div>
 </div>
 
