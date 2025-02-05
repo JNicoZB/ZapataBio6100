@@ -7,9 +7,7 @@ output:
   html_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ##1. #find: [ \t]{2, } #replace: , 
 
