@@ -11,9 +11,9 @@
 
 <meta name="author" content="NZ" />
 
-<meta name="date" content="2025-01-29" />
+<meta name="date" content="2025-02-07" />
 
-<title>homework_links</title>
+<title>Homework4_NZ</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -265,17 +265,102 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">homework_links</h1>
+<h1 class="title toc-ignore">Homework4_NZ</h1>
 <h4 class="author">NZ</h4>
-<h4 class="date">2025-01-29</h4>
+<h4 class="date">2025-02-07</h4>
 
 </div>
 
 
-<p>Homework 1</p>
-<p>Homework 2</p>
-<p>Homework 3 <a href="HW3.html">Regular Expression</a></p>
-<p>Homework 4 <a href="Homework4_NZ.html">Atomic Vectors</a></p>
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting
+syntax for authoring HTML, PDF, and MS Word documents. For more details
+on using R Markdown see <a href="http://rmarkdown.rstudio.com"
+class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be
+generated that includes both content as well as the output of any
+embedded R code chunks within the document. You can embed an R code
+chunk like this:</p>
+<pre class="r"><code>summary(cars)</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<p>#HOMEWORK 4</p>
+<div id="section" class="section level3">
+<h3>1</h3>
+<pre><code>x &lt;- 1.1
+a &lt;- 2.2
+b &lt;- 3.3 
+
+z &lt;- x^(a^b)
+print(z)
+z &lt;- (x^a)^b
+print(z)
+z &lt;- 3*(x^3)+2*(x^2)+1
+print(z)
+</code></pre>
+</div>
+<div id="section-1" class="section level3">
+<h3>2</h3>
+<pre><code>my_vector1 &lt;- c(seq(from=1 , to=8), seq(from=7, to=1)) 
+print(my_vector1)
+my_vector2 &lt;- c(rep(1:5,1:5))
+print(my_vector2)
+my_vector3 &lt;- c(rep(5:1,1:5))
+print(my_vector3)
+</code></pre>
+</div>
+<div id="section-2" class="section level3">
+<h3>3</h3>
+<pre><code>vector3 &lt;- runif(2)
+print(vector3)
+asin(vector3)
+acos(vector3)
+atan(vector3)
+</code></pre>
+</div>
+<div id="section-3" class="section level3">
+<h3>4</h3>
+<pre><code>queue &lt;- c(&quot;sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)
+print(queue)
+queue &lt;- c(queue, &quot;serpent&quot;)
+print(queue)
+queue &lt;- queue[queue !=&quot;sheep&quot;]
+print(queue)
+#other way
+queue[c(1,2)]
+queue[-c(1)]
+print(queue)
+
+queue &lt;- c(&quot;donkey&quot;, queue)
+print(queue)
+queue &lt;- queue[queue !=&quot;serpent&quot;]
+print(queue)
+queue &lt;- queue[queue !=&quot;owl&quot;]
+print(queue)
+queue &lt;- c(queue[1:2], &quot;aphid&quot;, queue[3])  
+print(queue)
+position &lt;- which(queue == &quot;aphid&quot;)
+print(position)
+</code></pre>
+</div>
+<div id="section-4" class="section level3">
+<h3>5</h3>
+<pre><code>z &lt;- seq(1,100) 
+print(z)
+
+z &lt;- 1:100
+print(z)
+filtered_numbers &lt;- z[which(z %% 2 != 0 &amp; z %% 3 != 0 &amp; z %% 7 != 0)]
+print(filtered_numbers)
+</code></pre>
+</div>
+</div>
 
 
 

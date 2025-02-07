@@ -23,11 +23,19 @@ summary(cars)
 
 ### 1
 
+Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the value of the variable z and print the value stored in z.
+
+𝑥𝑎𝑏
+(𝑥𝑎)𝑏
+3𝑥3+2𝑥2+1
+
 ```
+# First, assign the values to x, a and b
 x <- 1.1
 a <- 2.2
 b <- 3.3 
 
+# Create a vector with the formula
 z <- x^(a^b)
 print(z)
 z <- (x^a)^b
@@ -40,6 +48,10 @@ print(z)
 
 ### 2
 
+Using the rep and seq functions, create the following vectors:
+a. (1,2,3,4,5,6,7,8,7,6,5,4,3,2,1)
+b. (1,2,2,3,3,3,4,4,4,4,5,5,5,5,5)
+c. (5,4,4,3,3,3,2,2,2,2,1,1,1,1,1)
 ```
 my_vector1 <- c(seq(from=1 , to=8), seq(from=7, to=1)) 
 print(my_vector1)
@@ -49,9 +61,11 @@ my_vector3 <- c(rep(5:1,1:5))
 print(my_vector3)
 
 ```
-
+Use the function seq to create the sequence and rep to determine how many times the the numbers repeat 
 
 ### 3
+
+Create a vector of two random uniform numbers. In a spatial map, these can be interpreted as x and y coordinates that give the location of an individual (such as a marked forest tree in a plot that has been mapped). Using one of R’s inverse trigonometry functions (asin(), acos(), or atan()), convert these numbers into polar coordinates
 
 ```
 vector3 <- runif(2)
@@ -64,6 +78,16 @@ atan(vector3)
 
 
 ### 4
+
+Create a vector queue <- c("sheep", "fox", "owl", "ant") where queue represents the animals that are lined up to enter Noah’s Ark, with the sheep at the front of the line. Using R expressions, update queue as:
+
+the serpent arrives and gets in line;
+the sheep enters the ark;
+the donkey arrives and talks his way to the front of the line;
+the serpent gets impatient and leaves;
+the owl gets bored and leaves;
+the aphid arrives and the ant invites him to cut in line.
+Finally, determine the position of the aphid in the line.
 
 ```
 queue <- c("sheep", "fox", "owl", "ant")
@@ -88,6 +112,8 @@ print(queue)
 position <- which(queue == "aphid")
 print(position)
 
+"aphid" postion 3
+
 ```
 
 
@@ -103,7 +129,7 @@ filtered_numbers <- z[which(z %% 2 != 0 & z %% 3 != 0 & z %% 7 != 0)]
 print(filtered_numbers)
 
 ```
-
+Generate a sequence from 1 to 100. Use "%%" to determine the remainder when each number is divided.
 
 
 
