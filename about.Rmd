@@ -3,4 +3,4 @@ title: "About This Website"
 ---
 
 I'm a PhD student in the Plant Biology department at UVM.
-My main focus are the systematics and evolution of tropical Ferns and Lycophytes
+My main focus are the systematic and evolution of tropical Ferns and Lycophytes
