@@ -1,6 +1,29 @@
-# Homwework 4
+---
+title: "Homework4_NZ"
+author: "NZ"
+date: "2025-02-07"
+output: html_document
+---
 
-#1
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+#HOMEWORK 4
+
+### 1
+
+```
 x <- 1.1
 a <- 2.2
 b <- 3.3 
@@ -12,8 +35,12 @@ print(z)
 z <- 3*(x^3)+2*(x^2)+1
 print(z)
 
-#2
+```
 
+
+### 2
+
+```
 my_vector1 <- c(seq(from=1 , to=8), seq(from=7, to=1)) 
 print(my_vector1)
 my_vector2 <- c(rep(1:5,1:5))
@@ -21,16 +48,24 @@ print(my_vector2)
 my_vector3 <- c(rep(5:1,1:5))
 print(my_vector3)
 
-#3
+```
+
+
+### 3
+
+```
 vector3 <- runif(2)
 print(vector3)
 asin(vector3)
 acos(vector3)
 atan(vector3)
 
+```
 
-#4
-#agregar 
+
+### 4
+
+```
 queue <- c("sheep", "fox", "owl", "ant")
 print(queue)
 queue <- c(queue, "serpent")
@@ -53,8 +88,12 @@ print(queue)
 position <- which(queue == "aphid")
 print(position)
 
-#5 
+```
 
+
+### 5
+
+```
 z <- seq(1,100) 
 print(z)
 
@@ -62,3 +101,9 @@ z <- 1:100
 print(z)
 filtered_numbers <- z[which(z %% 2 != 0 & z %% 3 != 0 & z %% 7 != 0)]
 print(filtered_numbers)
+
+```
+
+
+
+
