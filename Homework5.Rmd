@@ -31,6 +31,16 @@ my_vector <- seq(1:n_dims^2)
 Use the sample function to randomly reshuffle these values.
 ```{r, eval=TRUE, echo=TRUE}
 matrix1 <- matrix(sample(my_vector), nrow=n_dims)
+# print out the matrix
+print(matrix1) 
 ```
+
+Find a function in r to transpose the matrix
+``` {r, eval=TRUE, echo=TRUE}
+transposed_matrix1 <- t(matrix1)
+print(transposed_matrix1)
+```
+
+
 
 
