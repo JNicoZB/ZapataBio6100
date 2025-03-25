@@ -27,3 +27,7 @@ rowSums(m) == m[ ,1]
 
 n_dims <- runif(1, min = 3, max = 10)
 print(n_dims)
+
+## 1 
+n_dims <- sample(3:10, size=1)
+print(n_dims)
