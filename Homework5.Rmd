@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #Homewrok5
 
-Nicolas Zapata
+Nicolás Zapata
 
 ### 1
 Assign to the variable n_dims a single random integer between 3 and 10.
@@ -21,4 +21,16 @@ n_dims <- sample(3:10, size=1)
 print(n_dims)
 
 ```
+
+Create a vector of consecutive integers from 1 to n_dims2
+```{r, eval=TRUE, echo=TRUE}
+my_vector <- seq(1:n_dims^2)
+
+```
+
+Use the sample function to randomly reshuffle these values.
+```{r, eval=TRUE, echo=TRUE}
+matrix1 <- matrix(sample(my_vector), nrow=n_dims)
+```
+
 
