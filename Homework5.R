@@ -24,3 +24,6 @@ m[4, ]
 m[ ,1]
 m[rowSums(m[ ,1])] 
 rowSums(m) == m[ ,1]
+
+n_dims <- runif(1, min = 3, max = 10)
+print(n_dims)

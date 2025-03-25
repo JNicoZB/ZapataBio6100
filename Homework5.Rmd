@@ -13,3 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Nicolas Zapata
 
+### 1
+Assign to the variable n_dims a single random integer between 3 and 10.
+
+```{r, eval=TRUE, echo=TRUE}
+n_dims <- sample(3:10, size=1)
+print(n_dims)
+
+```
+```
