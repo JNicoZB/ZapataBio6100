@@ -104,7 +104,7 @@ print(queue)
 position <- which(queue == "aphid")
 print(position)
 
-"aphid" postion 3
+
 
 ```
 
