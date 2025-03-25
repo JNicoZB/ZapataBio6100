@@ -242,3 +242,18 @@ str(data_names)
 
 data_names <- data[ ,c("country", "ecoregion")]
 str(data_names)
+
+## feb 11 class exercises
+
+# code for reading in a data frame a .csv
+my_data <- read.table(file="ToyData.csv", header = TRUE, sep = ",", comment.char = "#")
+
+# inspect object
+str(my_data)
+
+# now add a column
+my_data$newVar <- runif(4)
+head(my_data)
+write.table(x=my_data, file = "SampleOutputFile.csv", sep=",")
+saveRDS(my_data, file="my_data.RDS") # RDS suffix is not required, but good for clarity
+restored_my_data <- readRDS("my_data.RDS)
