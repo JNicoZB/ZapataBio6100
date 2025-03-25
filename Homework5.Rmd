@@ -43,17 +43,19 @@ print(transposed_matrix1)
 
 Calculate the sum and the mean of the elements in the first row and then the last row.
 ```{r, eval=TRUE, echo=TRUE}
-# sum  first row
-firstrow_sum <- sum(matrix1[1,])
 # mean first row
 firstrow_mean <- mean(matrix1[1,])
+# sum  first row
+firstrow_sum <- sum(matrix1[1,])
+
 ```
 
 ```{r, eval=TRUE, echo=TRUE}
+# mean last row 
+lastrow_mean <- mean(matrix1[n_dims,])
 # sum last row
 lastrow_sum <- sum(matrix1[n_dims,])  
-# mean last row 
-lastrow_mean <- mean(matrix1[n_dims,]) 
+ 
 ```
 
 

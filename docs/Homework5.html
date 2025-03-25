@@ -280,30 +280,48 @@ $(document).ready(function () {
 10.</p>
 <pre class="r"><code>n_dims &lt;- sample(3:10, size=1)
 print(n_dims)</code></pre>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 10</code></pre>
 <p>Create a vector of consecutive integers from 1 to n_dims2</p>
 <pre class="r"><code>my_vector &lt;- seq(1:n_dims^2)</code></pre>
 <p>Use the sample function to randomly reshuffle these values.</p>
 <pre class="r"><code>matrix1 &lt;- matrix(sample(my_vector), nrow=n_dims)
 # print out the matrix
 print(matrix1) </code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]   36   26   31   11   23   12
-## [2,]   25    7   19   17   21   28
-## [3,]    5   32    4   27   30   20
-## [4,]    9   34    2   10    8   22
-## [5,]   29    3   35    6   33   18
-## [6,]   15   16   24   14    1   13</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]   62   35   64   36   72   56    7   65   73    81
+##  [2,]   51   85   11   29   24   13   37   19   58    82
+##  [3,]   74   92   38   98   17    4   93   47   50    41
+##  [4,]   30   43   40   27   59    3   78   88   32    77
+##  [5,]    1   49   31   90   96   60   25   69   87    44
+##  [6,]   34   97   76   66   23   12   68   16   83    10
+##  [7,]   63   84   42   33   79    5    8   22   53    45
+##  [8,]   61   94   71   57   54   28   55   21   20     2
+##  [9,]   14   18   70    9   91   99   52   86   75     6
+## [10,]   39   26   48   46  100   67   95   89   15    80</code></pre>
 <p>Find a function in r to transpose the matrix</p>
 <pre class="r"><code>transposed_matrix1 &lt;- t(matrix1)
 print(transposed_matrix1)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]   36   25    5    9   29   15
-## [2,]   26    7   32   34    3   16
-## [3,]   31   19    4    2   35   24
-## [4,]   11   17   27   10    6   14
-## [5,]   23   21   30    8   33    1
-## [6,]   12   28   20   22   18   13</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]   62   51   74   30    1   34   63   61   14    39
+##  [2,]   35   85   92   43   49   97   84   94   18    26
+##  [3,]   64   11   38   40   31   76   42   71   70    48
+##  [4,]   36   29   98   27   90   66   33   57    9    46
+##  [5,]   72   24   17   59   96   23   79   54   91   100
+##  [6,]   56   13    4    3   60   12    5   28   99    67
+##  [7,]    7   37   93   78   25   68    8   55   52    95
+##  [8,]   65   19   47   88   69   16   22   21   86    89
+##  [9,]   73   58   50   32   87   83   53   20   75    15
+## [10,]   81   82   41   77   44   10   45    2    6    80</code></pre>
+<p>Calculate the sum and the mean of the elements in the first row and
+then the last row.</p>
+<pre class="r"><code># sum  first row
+firstrow_sum &lt;- sum(matrix1[1,])
+# mean first row
+firstrow_mean &lt;- mean(matrix1[1,])</code></pre>
+<pre class="r"><code># sum last row
+lastrow_sum &lt;- sum(matrix1[n_dims,])  
+# mean last row 
+lastrow_mean &lt;- mean(matrix1[n_dims,]) </code></pre>
 </div>
 
 
