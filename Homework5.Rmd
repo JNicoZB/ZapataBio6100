@@ -45,16 +45,19 @@ Calculate the sum and the mean of the elements in the first row and then the las
 ```{r, eval=TRUE, echo=TRUE}
 # mean first row
 firstrow_mean <- mean(matrix1[1,])
+print(firstrow_mean) 
 # sum  first row
 firstrow_sum <- sum(matrix1[1,])
-
+print(firstrow_sum)
 ```
 
 ```{r, eval=TRUE, echo=TRUE}
 # mean last row 
 lastrow_mean <- mean(matrix1[n_dims,])
+print(lastrow_mean)
 # sum last row
-lastrow_sum <- sum(matrix1[n_dims,])  
+lastrow_sum <- sum(matrix1[n_dims,]) 
+print(lastrow_sum)
  
 ```
 
