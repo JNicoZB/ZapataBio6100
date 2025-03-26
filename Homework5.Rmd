@@ -61,10 +61,89 @@ print(lastrow_sum)
  
 ```
 
+Read about the eigen() function and use it on your matrix
+```{r, eval=TRUE, echo=TRUE}
+matrix_eigen <- eigen(matrix1) 
+print(matrix_eigen)
+```
 
+Dig in with the typeof() function to figure out their type.
+```{r, eval=TRUE, echo=TRUE}
+typeof(matrix_eigen$values)
+```
 
+```{r, eval=TRUE, echo=TRUE}
+typeof(matrix_eigen$vectors)
+```
 
+### 2
+Create a list with the following named elements:
 
+```{r, eval=TRUE, echo=TRUE}
+# my_matrix, which is a 4 x 4 matrix filled with random uniform values
 
+my_matrix <- matrix(data=runif(16), nrow=4)
+print(my_matrix) 
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# my_logical which is a 100-element vector of TRUE or FALSE values. Do this efficiently by setting up a vector of random values and then applying an inequality to it.
+my_logical <- (runif(100) > .8)
+print(my_logical) 
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# my_letters, which is a 26-element vector of all the lower-case letters in random order.
+my_letters <- sample(letters)
+print(my_letters)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector
+my_list1 <- list(my_matrix, my_logical, my_letters)
+
+new_list <- list(my_matrix[2,2], my_logical [2], my_letters[2]) 
+print(new_list)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# use the typeof() function to confirm the underlying data types of each component in this list
+typeof(new_list[[1]])
+```
+
+```{r, eval=TRUE, echo=TRUE}
+typeof(new_list[[2]])
+```
+
+```{r, eval=TRUE, echo=TRUE}
+typeof(new_list[[3]])
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# combine the underlying elements from the new list into a single atomic vector with the c() function
+combined_elements_vector <- c(new_list[[1]], new_list[[2]], new_list[[3]])
+print(combined_elements_vector)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# what is the data type of this vector?
+typeof(combined_elements_vector)
+```
+
+### 3
+Create a data frame with the two variables (= columns) and 26 cases (= rows) below:
+
+```{r, eval=TRUE, echo=TRUE}
+#call the first variable my_unis and fill it with 26 random uniform values from 0 to 10
+
+# call the second variable my_letters and fill it with 26 capital letters in random order.
+dataframe <- data.frame(my_unis = runif(26, min=0, max=10), my_letters = sample(LETTERS))
+print(dataframe)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
+dataframe[sample(1:26, size=4), 1] <- NA
+```
 
 
