@@ -1,0 +1,26 @@
+---
+title: "Homework7_NZ"
+author: "NZ"
+date: "2025-03-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Homework 7
+Nicolas Zapata
+
+
+This homework assignment focus on data manipulation in R. Complete these problems using the dplyr and tidyverse packages.
+
+### 1. Examine the structure of the iris data set. How many observations and variables are in the data set?
+
+```{r, eval=TRUE, echo=TRUE}
+library(tidyverse)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+str(iris)
+```

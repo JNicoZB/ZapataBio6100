@@ -18,11 +18,24 @@ Homework 2
 Homework 3 [Regular Expression](HW3.html)
 
 
-
 Homework 4 [Atomic Vectors](Homework4_NZ.html)
 
 
 Homework 5 [Working with matrices, lists, and data frames](Homework5.html) 
+
+
+Homework 6 [Creating Fake Data Sets To Explore Hypotheses](Homework6_NZ.html)
+
+
+Homework 7 [Data manipulations using the dplyr package](Homework7_NZ.html) 
+
+
+Homework 8 [Simulating and Fitting Data Distributions](Homework8_NZ) 
+
+
+
+
+
 
 
 

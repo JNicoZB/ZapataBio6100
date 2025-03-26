@@ -486,6 +486,42 @@ print(dataframe)</code></pre>
 ## 26 2.0287800          C</code></pre>
 <pre class="r"><code># for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
 dataframe[sample(1:26, size=4), 1] &lt;- NA</code></pre>
+<pre class="r"><code># for the first variable, write a single line of R code to identify which rows have the missing values
+which(is.na(dataframe$my_unis))</code></pre>
+<pre><code>## [1]  8 11 13 17</code></pre>
+<pre class="r"><code># re-order the entire data frame to arrange the second variable in alphabetical order
+dataframe &lt;- dataframe[order(dataframe$my_letters),]
+print(dataframe)</code></pre>
+<pre><code>##      my_unis my_letters
+## 25 3.4002871          A
+## 6  2.4476715          B
+## 26 2.0287800          C
+## 22 5.7810432          D
+## 19 7.0023942          E
+## 4  6.8258169          F
+## 18 4.5138362          G
+## 12 4.2339235          H
+## 20 6.0077490          I
+## 23 4.0548816          J
+## 5  8.3315648          K
+## 17        NA          L
+## 16 3.1403766          M
+## 13        NA          N
+## 7  2.6704159          O
+## 15 5.1636362          P
+## 8         NA          Q
+## 14 7.5791395          R
+## 1  3.5275393          S
+## 3  7.9667856          T
+## 21 1.6168693          U
+## 24 0.9072979          V
+## 2  3.8040615          W
+## 9  1.0065810          X
+## 10 2.7855856          Y
+## 11        NA          Z</code></pre>
+<pre class="r"><code># calculate the column mean for the first variable
+mean(dataframe$my_unis, na.rm=TRUE)</code></pre>
+<pre><code>## [1] 4.30892</code></pre>
 </div>
 
 
