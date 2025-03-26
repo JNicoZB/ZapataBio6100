@@ -146,4 +146,19 @@ print(dataframe)
 dataframe[sample(1:26, size=4), 1] <- NA
 ```
 
+```{r, eval=TRUE, echo=TRUE}
+# for the first variable, write a single line of R code to identify which rows have the missing values
+which(is.na(dataframe$my_unis))
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# re-order the entire data frame to arrange the second variable in alphabetical order
+dataframe <- dataframe[order(dataframe$my_letters),]
+print(dataframe)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+# calculate the column mean for the first variable
+mean(dataframe$my_unis, na.rm=TRUE)
+```
 
