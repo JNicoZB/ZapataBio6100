@@ -280,111 +280,67 @@ $(document).ready(function () {
 10.</p>
 <pre class="r"><code>n_dims &lt;- sample(3:10, size=1)
 print(n_dims)</code></pre>
-<pre><code>## [1] 10</code></pre>
+<pre><code>## [1] 5</code></pre>
 <p>Create a vector of consecutive integers from 1 to n_dims2</p>
 <pre class="r"><code>my_vector &lt;- seq(1:n_dims^2)</code></pre>
 <p>Use the sample function to randomly reshuffle these values.</p>
 <pre class="r"><code>matrix1 &lt;- matrix(sample(my_vector), nrow=n_dims)
 # print out the matrix
 print(matrix1) </code></pre>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,]   62   35   64   36   72   56    7   65   73    81
-##  [2,]   51   85   11   29   24   13   37   19   58    82
-##  [3,]   74   92   38   98   17    4   93   47   50    41
-##  [4,]   30   43   40   27   59    3   78   88   32    77
-##  [5,]    1   49   31   90   96   60   25   69   87    44
-##  [6,]   34   97   76   66   23   12   68   16   83    10
-##  [7,]   63   84   42   33   79    5    8   22   53    45
-##  [8,]   61   94   71   57   54   28   55   21   20     2
-##  [9,]   14   18   70    9   91   99   52   86   75     6
-## [10,]   39   26   48   46  100   67   95   89   15    80</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    8   17   19    2   20
+## [2,]    3   14   18    7   13
+## [3,]    6   23   22   11   25
+## [4,]    4   21    9   15   10
+## [5,]    5   24   12    1   16</code></pre>
 <p>Find a function in r to transpose the matrix</p>
 <pre class="r"><code>transposed_matrix1 &lt;- t(matrix1)
 print(transposed_matrix1)</code></pre>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,]   62   51   74   30    1   34   63   61   14    39
-##  [2,]   35   85   92   43   49   97   84   94   18    26
-##  [3,]   64   11   38   40   31   76   42   71   70    48
-##  [4,]   36   29   98   27   90   66   33   57    9    46
-##  [5,]   72   24   17   59   96   23   79   54   91   100
-##  [6,]   56   13    4    3   60   12    5   28   99    67
-##  [7,]    7   37   93   78   25   68    8   55   52    95
-##  [8,]   65   19   47   88   69   16   22   21   86    89
-##  [9,]   73   58   50   32   87   83   53   20   75    15
-## [10,]   81   82   41   77   44   10   45    2    6    80</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    8    3    6    4    5
+## [2,]   17   14   23   21   24
+## [3,]   19   18   22    9   12
+## [4,]    2    7   11   15    1
+## [5,]   20   13   25   10   16</code></pre>
 <p>Calculate the sum and the mean of the elements in the first row and
 then the last row.</p>
 <pre class="r"><code># mean first row
 firstrow_mean &lt;- mean(matrix1[1,])
 print(firstrow_mean) </code></pre>
-<pre><code>## [1] 55.1</code></pre>
+<pre><code>## [1] 13.2</code></pre>
 <pre class="r"><code># sum  first row
 firstrow_sum &lt;- sum(matrix1[1,])
 print(firstrow_sum)</code></pre>
-<pre><code>## [1] 551</code></pre>
+<pre><code>## [1] 66</code></pre>
 <pre class="r"><code># mean last row 
 lastrow_mean &lt;- mean(matrix1[n_dims,])
 print(lastrow_mean)</code></pre>
-<pre><code>## [1] 60.5</code></pre>
+<pre><code>## [1] 11.6</code></pre>
 <pre class="r"><code># sum last row
 lastrow_sum &lt;- sum(matrix1[n_dims,]) 
 print(lastrow_sum)</code></pre>
-<pre><code>## [1] 605</code></pre>
+<pre><code>## [1] 58</code></pre>
 <p>Read about the eigen() function and use it on your matrix</p>
 <pre class="r"><code>matrix_eigen &lt;- eigen(matrix1) 
 print(matrix_eigen)</code></pre>
 <pre><code>## eigen() decomposition
 ## $values
-##  [1] 502.828310+ 0.000000i -50.912683+74.184759i -50.912683-74.184759i
-##  [4]  -4.395444+78.778358i  -4.395444-78.778358i  64.614842+ 7.295787i
-##  [7]  64.614842- 7.295787i -48.954271+ 0.000000i  15.756264+26.467664i
-## [10]  15.756264-26.467664i
+## [1] 65.148906+0.000000i 11.676547+0.000000i -2.523162+5.866364i
+## [4] -2.523162-5.866364i  3.220870+0.000000i
 ## 
 ## $vectors
-##               [,1]                     [,2]                     [,3]
-##  [1,] 0.3554040+0i -0.205457803+0.17715587i -0.205457803-0.17715587i
-##  [2,] 0.2578290+0i -0.107491614+0.18253013i -0.107491614-0.18253013i
-##  [3,] 0.3372008+0i -0.005739111+0.01770713i -0.005739111-0.01770713i
-##  [4,] 0.2985293+0i -0.177767702-0.30863522i -0.177767702+0.30863522i
-##  [5,] 0.3411415+0i -0.264169471+0.22023229i -0.264169471-0.22023229i
-##  [6,] 0.2932048+0i  0.032767121+0.11298424i  0.032767121-0.11298424i
-##  [7,] 0.2762684+0i  0.224105654+0.29344386i  0.224105654-0.29344386i
-##  [8,] 0.2819595+0i  0.467492402+0.00000000i  0.467492402+0.00000000i
-##  [9,] 0.3199153+0i  0.024015208-0.37169590i  0.024015208+0.37169590i
-## [10,] 0.3793024+0i  0.050148889-0.35506265i  0.050148889+0.35506265i
-##                           [,4]                     [,5]
-##  [1,] -0.42479137+0.000000000i -0.42479137+0.000000000i
-##  [2,]  0.05287194+0.211130275i  0.05287194-0.211130275i
-##  [3,]  0.37831826+0.004105998i  0.37831826-0.004105998i
-##  [4,]  0.17197412-0.086980112i  0.17197412+0.086980112i
-##  [5,] -0.38420494-0.116884907i -0.38420494+0.116884907i
-##  [6,]  0.23715129-0.111688352i  0.23715129+0.111688352i
-##  [7,] -0.08741957+0.400518526i -0.08741957-0.400518526i
-##  [8,]  0.29332871-0.005301582i  0.29332871+0.005301582i
-##  [9,] -0.19985821-0.213785909i -0.19985821+0.213785909i
-## [10,]  0.07984889-0.125528646i  0.07984889+0.125528646i
-##                           [,6]                     [,7]           [,8]
-##  [1,] -0.13621039+0.144704609i -0.13621039-0.144704609i -0.41923279+0i
-##  [2,]  0.03696069-0.039290337i  0.03696069+0.039290337i  0.10659495+0i
-##  [3,] -0.42013680+0.135172170i -0.42013680-0.135172170i  0.72244286+0i
-##  [4,] -0.30623667-0.004613475i -0.30623667+0.004613475i -0.18556723+0i
-##  [5,]  0.37146852-0.183985083i  0.37146852+0.183985083i  0.05362973+0i
-##  [6,]  0.09270490+0.054914940i  0.09270490-0.054914940i -0.26538084+0i
-##  [7,]  0.13740634-0.064776871i  0.13740634+0.064776871i -0.32938931+0i
-##  [8,] -0.24237477+0.096142888i -0.24237477-0.096142888i -0.03122419+0i
-##  [9,]  0.55989843+0.000000000i  0.55989843+0.000000000i -0.04318587+0i
-## [10,] -0.28159913-0.041349562i -0.28159913+0.041349562i  0.26810833+0i
-##                             [,9]                      [,10]
-##  [1,] -0.2655081561-0.052242715i -0.2655081561+0.052242715i
-##  [2,]  0.4633941920+0.000000000i  0.4633941920+0.000000000i
-##  [3,]  0.1669372757+0.001038187i  0.1669372757-0.001038187i
-##  [4,] -0.0006936898-0.048895339i -0.0006936898+0.048895339i
-##  [5,] -0.3786227697+0.004906263i -0.3786227697-0.004906263i
-##  [6,]  0.2754612541+0.056409278i  0.2754612541-0.056409278i
-##  [7,] -0.2193155098+0.229427348i -0.2193155098-0.229427348i
-##  [8,]  0.2741254096-0.324648661i  0.2741254096+0.324648661i
-##  [9,] -0.3731041397+0.003980355i -0.3731041397-0.003980355i
-## [10,]  0.1181690170+0.157725197i  0.1181690170-0.157725197i</code></pre>
+##               [,1]           [,2]                   [,3]                   [,4]
+## [1,] -0.4588877+0i  0.58202693+0i -0.1440120+0.04507489i -0.1440120-0.04507489i
+## [2,] -0.3846153+0i -0.13614838+0i -0.2897704+0.33131548i -0.2897704-0.33131548i
+## [3,] -0.5895703+0i -0.02384127+0i -0.3878396-0.35094471i -0.3878396+0.35094471i
+## [4,] -0.3804758+0i -0.73515528+0i  0.2548244-0.14178544i  0.2548244+0.14178544i
+## [5,] -0.3861841+0i  0.31888334+0i  0.6518218+0.00000000i  0.6518218+0.00000000i
+##                 [,5]
+## [1,] -0.983590086+0i
+## [2,]  0.145374568+0i
+## [3,]  0.009805205+0i
+## [4,] -0.021177199+0i
+## [5,]  0.104269657+0i</code></pre>
 <p>Dig in with the typeof() function to figure out their type.</p>
 <pre class="r"><code>typeof(matrix_eigen$values)</code></pre>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
@@ -398,41 +354,41 @@ print(matrix_eigen)</code></pre>
 
 my_matrix &lt;- matrix(data=runif(16), nrow=4)
 print(my_matrix) </code></pre>
-<pre><code>##           [,1]      [,2]       [,3]      [,4]
-## [1,] 0.0436055 0.4837186 0.04838859 0.7286135
-## [2,] 0.6219287 0.8051263 0.90654015 0.5310197
-## [3,] 0.7741914 0.5364217 0.75977207 0.9540669
-## [4,] 0.9381966 0.1281845 0.66296607 0.7534459</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]      [,4]
+## [1,] 0.14696685 0.97622339 0.53219323 0.6419603
+## [2,] 0.32580456 0.04854645 0.13360023 0.6867251
+## [3,] 0.01205909 0.91198671 0.54485144 0.2596944
+## [4,] 0.47180026 0.36509561 0.01981688 0.3010320</code></pre>
 <pre class="r"><code># my_logical which is a 100-element vector of TRUE or FALSE values. Do this efficiently by setting up a vector of random values and then applying an inequality to it.
 my_logical &lt;- (runif(100) &gt; .8)
 print(my_logical) </code></pre>
-<pre><code>##   [1] FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-##  [13] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
-##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [37]  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-##  [49] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
-##  [61] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
-##  [73] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [85]  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [97] FALSE FALSE FALSE  TRUE</code></pre>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE
+##  [25] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
+##  [85] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE</code></pre>
 <pre class="r"><code># my_letters, which is a 26-element vector of all the lower-case letters in random order.
 my_letters &lt;- sample(letters)
 print(my_letters)</code></pre>
-<pre><code>##  [1] &quot;q&quot; &quot;g&quot; &quot;w&quot; &quot;v&quot; &quot;p&quot; &quot;s&quot; &quot;k&quot; &quot;o&quot; &quot;n&quot; &quot;m&quot; &quot;f&quot; &quot;d&quot; &quot;y&quot; &quot;x&quot; &quot;z&quot; &quot;i&quot; &quot;t&quot; &quot;a&quot; &quot;b&quot;
-## [20] &quot;c&quot; &quot;u&quot; &quot;j&quot; &quot;h&quot; &quot;l&quot; &quot;e&quot; &quot;r&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;r&quot; &quot;g&quot; &quot;i&quot; &quot;f&quot; &quot;t&quot; &quot;o&quot; &quot;s&quot; &quot;x&quot; &quot;n&quot; &quot;m&quot; &quot;p&quot; &quot;k&quot; &quot;z&quot; &quot;v&quot; &quot;q&quot; &quot;u&quot; &quot;w&quot; &quot;j&quot;
+## [20] &quot;b&quot; &quot;h&quot; &quot;l&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;y&quot;</code></pre>
 <pre class="r"><code># create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector
 my_list1 &lt;- list(my_matrix, my_logical, my_letters)
 
 new_list &lt;- list(my_matrix[2,2], my_logical [2], my_letters[2]) 
 print(new_list)</code></pre>
 <pre><code>## [[1]]
-## [1] 0.8051263
+## [1] 0.04854645
 ## 
 ## [[2]]
 ## [1] FALSE
 ## 
 ## [[3]]
-## [1] &quot;g&quot;</code></pre>
+## [1] &quot;r&quot;</code></pre>
 <pre class="r"><code># use the typeof() function to confirm the underlying data types of each component in this list
 typeof(new_list[[1]])</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
@@ -443,7 +399,7 @@ typeof(new_list[[1]])</code></pre>
 <pre class="r"><code># combine the underlying elements from the new list into a single atomic vector with the c() function
 combined_elements_vector &lt;- c(new_list[[1]], new_list[[2]], new_list[[3]])
 print(combined_elements_vector)</code></pre>
-<pre><code>## [1] &quot;0.805126263992861&quot; &quot;FALSE&quot;             &quot;g&quot;</code></pre>
+<pre><code>## [1] &quot;0.0485464530065656&quot; &quot;FALSE&quot;              &quot;r&quot;</code></pre>
 <pre class="r"><code># what is the data type of this vector?
 typeof(combined_elements_vector)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
@@ -457,71 +413,71 @@ typeof(combined_elements_vector)</code></pre>
 # call the second variable my_letters and fill it with 26 capital letters in random order.
 dataframe &lt;- data.frame(my_unis = runif(26, min=0, max=10), my_letters = sample(LETTERS))
 print(dataframe)</code></pre>
-<pre><code>##      my_unis my_letters
-## 1  3.5275393          S
-## 2  3.8040615          W
-## 3  7.9667856          T
-## 4  6.8258169          F
-## 5  8.3315648          K
-## 6  2.4476715          B
-## 7  2.6704159          O
-## 8  7.8492838          Q
-## 9  1.0065810          X
-## 10 2.7855856          Y
-## 11 4.3715802          Z
-## 12 4.2339235          H
-## 13 9.9421382          N
-## 14 7.5791395          R
-## 15 5.1636362          P
-## 16 3.1403766          M
-## 17 0.2797234          L
-## 18 4.5138362          G
-## 19 7.0023942          E
-## 20 6.0077490          I
-## 21 1.6168693          U
-## 22 5.7810432          D
-## 23 4.0548816          J
-## 24 0.9072979          V
-## 25 3.4002871          A
-## 26 2.0287800          C</code></pre>
+<pre><code>##     my_unis my_letters
+## 1  2.121053          G
+## 2  7.158271          D
+## 3  2.434775          B
+## 4  2.285249          O
+## 5  6.938214          A
+## 6  2.904489          W
+## 7  1.120629          P
+## 8  9.727336          C
+## 9  3.818033          N
+## 10 1.418137          J
+## 11 5.252314          Q
+## 12 1.157766          S
+## 13 7.925229          F
+## 14 2.113838          L
+## 15 9.116821          X
+## 16 8.321615          E
+## 17 4.301579          U
+## 18 2.730552          H
+## 19 4.994984          V
+## 20 3.716587          I
+## 21 5.581422          T
+## 22 3.642183          K
+## 23 5.229446          R
+## 24 6.341760          M
+## 25 6.693665          Z
+## 26 6.807550          Y</code></pre>
 <pre class="r"><code># for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
 dataframe[sample(1:26, size=4), 1] &lt;- NA</code></pre>
 <pre class="r"><code># for the first variable, write a single line of R code to identify which rows have the missing values
 which(is.na(dataframe$my_unis))</code></pre>
-<pre><code>## [1]  8 11 13 17</code></pre>
+<pre><code>## [1]  5  8 18 24</code></pre>
 <pre class="r"><code># re-order the entire data frame to arrange the second variable in alphabetical order
 dataframe &lt;- dataframe[order(dataframe$my_letters),]
 print(dataframe)</code></pre>
-<pre><code>##      my_unis my_letters
-## 25 3.4002871          A
-## 6  2.4476715          B
-## 26 2.0287800          C
-## 22 5.7810432          D
-## 19 7.0023942          E
-## 4  6.8258169          F
-## 18 4.5138362          G
-## 12 4.2339235          H
-## 20 6.0077490          I
-## 23 4.0548816          J
-## 5  8.3315648          K
-## 17        NA          L
-## 16 3.1403766          M
-## 13        NA          N
-## 7  2.6704159          O
-## 15 5.1636362          P
-## 8         NA          Q
-## 14 7.5791395          R
-## 1  3.5275393          S
-## 3  7.9667856          T
-## 21 1.6168693          U
-## 24 0.9072979          V
-## 2  3.8040615          W
-## 9  1.0065810          X
-## 10 2.7855856          Y
-## 11        NA          Z</code></pre>
+<pre><code>##     my_unis my_letters
+## 5        NA          A
+## 3  2.434775          B
+## 8        NA          C
+## 2  7.158271          D
+## 16 8.321615          E
+## 13 7.925229          F
+## 1  2.121053          G
+## 18       NA          H
+## 20 3.716587          I
+## 10 1.418137          J
+## 22 3.642183          K
+## 14 2.113838          L
+## 24       NA          M
+## 9  3.818033          N
+## 4  2.285249          O
+## 7  1.120629          P
+## 11 5.252314          Q
+## 23 5.229446          R
+## 12 1.157766          S
+## 21 5.581422          T
+## 17 4.301579          U
+## 19 4.994984          V
+## 6  2.904489          W
+## 15 9.116821          X
+## 26 6.807550          Y
+## 25 6.693665          Z</code></pre>
 <pre class="r"><code># calculate the column mean for the first variable
 mean(dataframe$my_unis, na.rm=TRUE)</code></pre>
-<pre><code>## [1] 4.30892</code></pre>
+<pre><code>## [1] 4.459802</code></pre>
 </div>
 
 
