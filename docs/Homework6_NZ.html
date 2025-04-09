@@ -273,7 +273,19 @@ $(document).ready(function () {
 
 
 <p>Homework 6</p>
-<pre class="r"><code>library(skimr)
+<p>Fake data set</p>
+<p>I am creating a fake data set based on the difference in leaf
+morphology of what is believed to be a fern species complex, this
+species has three growth forms (climbing, terrestrial, rheophytic). My
+hypothesis is that there are significant changes in leaf morphology and
+habit that may be different enough to separate the species, or simply
+confirm that they are the same species with broad adaptation to
+different environments. This will serve to correlate with molecular
+data, so let’s see ….</p>
+<div id="section" class="section level3">
+<h3>1</h3>
+<pre class="r"><code>#create a fake data set
+library(skimr)
 library(tidyverse)</code></pre>
 <pre><code>## ── Attaching core tidyverse packages ─────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -285,22 +297,28 @@ library(tidyverse)</code></pre>
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre class="r"><code>habit_id &lt;- c(&quot;terrestrial&quot;, &quot;climber&quot;, &quot;reophytic&quot;)
+<pre class="r"><code># 3 types of habit
+habit_id &lt;- c(&quot;terrestrial&quot;, &quot;climber&quot;, &quot;reophytic&quot;)
 
+# morphological parameters to consider in leaf 
 leave_size &lt;- c(round(rnorm(12, mean=20)))
 print(leave_size)</code></pre>
-<pre><code>##  [1] 21 20 20 21 19 19 18 21 21 21 22 21</code></pre>
+<pre><code>##  [1] 23 18 18 20 23 20 19 20 23 19 19 20</code></pre>
 <pre class="r"><code>lamina_width &lt;- c(runif(12, min = 10, max = 16))
 print(lamina_width)</code></pre>
-<pre><code>##  [1] 11.62378 10.91313 11.69163 11.31715 13.21064 12.71869 15.33205 10.39967
-##  [9] 11.09216 14.79563 14.50149 10.41044</code></pre>
+<pre><code>##  [1] 14.63683 11.25741 14.48874 13.51213 11.94668 12.25028 10.16162 12.90001
+##  [9] 15.82048 10.00237 10.63422 12.63966</code></pre>
 <pre class="r"><code>number_of_pinnae &lt;- c(round(runif(12, min = 1, max = 5)))
 print(number_of_pinnae)</code></pre>
-<pre><code>##  [1] 2 4 4 2 3 3 2 1 3 1 3 4</code></pre>
+<pre><code>##  [1] 2 5 3 4 4 4 1 2 3 5 4 1</code></pre>
 <pre class="r"><code>petiole_length &lt;- c(round(rnorm(12, mean=9)))
 print(petiole_length)</code></pre>
-<pre><code>##  [1] 10 10 11  8 10  9  8 10  8 10  8  7</code></pre>
-<pre class="r"><code>data.frame(habit_id,leave_size,petiole_length,lamina_width,number_of_pinnae) -&gt; mickelia_spp
+<pre><code>##  [1]  9 10  8  9 10 10  9 10  9 10  8  9</code></pre>
+</div>
+<div id="section-1" class="section level3">
+<h3>2</h3>
+<pre class="r"><code># make the data frame
+data.frame(habit_id,leave_size,petiole_length,lamina_width,number_of_pinnae) -&gt; mickelia_spp
 
 view(mickelia_spp)
 skim(mickelia_spp)</code></pre>
@@ -383,19 +401,19 @@ skim(mickelia_spp)</code></pre>
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="19%" />
+<col width="20%" />
 <col width="11%" />
 <col width="16%" />
-<col width="6%" />
+<col width="7%" />
 <col width="5%" />
+<col width="3%" />
 <col width="5%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -417,56 +435,59 @@ skim(mickelia_spp)</code></pre>
 <td align="left">leave_size</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">20.33</td>
-<td align="right">1.15</td>
-<td align="right">18.0</td>
-<td align="right">19.75</td>
-<td align="right">21.00</td>
-<td align="right">21.00</td>
-<td align="right">22.00</td>
-<td align="left">▁▂▂▇▁</td>
+<td align="right">20.17</td>
+<td align="right">1.85</td>
+<td align="right">18</td>
+<td align="right">19.0</td>
+<td align="right">20.00</td>
+<td align="right">20.75</td>
+<td align="right">23.00</td>
+<td align="left">▇▆▁▁▅</td>
 </tr>
 <tr class="even">
 <td align="left">petiole_length</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">9.08</td>
-<td align="right">1.24</td>
-<td align="right">7.0</td>
-<td align="right">8.00</td>
-<td align="right">9.50</td>
+<td align="right">9.25</td>
+<td align="right">0.75</td>
+<td align="right">8</td>
+<td align="right">9.0</td>
+<td align="right">9.00</td>
 <td align="right">10.00</td>
-<td align="right">11.00</td>
-<td align="left">▂▆▂▇▂</td>
+<td align="right">10.00</td>
+<td align="left">▃▁▇▁▇</td>
 </tr>
 <tr class="odd">
 <td align="left">lamina_width</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">12.33</td>
-<td align="right">1.75</td>
-<td align="right">10.4</td>
-<td align="right">11.05</td>
-<td align="right">11.66</td>
-<td align="right">13.53</td>
-<td align="right">15.33</td>
-<td align="left">▇▃▃▁▅</td>
+<td align="right">12.52</td>
+<td align="right">1.85</td>
+<td align="right">10</td>
+<td align="right">11.1</td>
+<td align="right">12.44</td>
+<td align="right">13.76</td>
+<td align="right">15.82</td>
+<td align="left">▇▇▅▇▂</td>
 </tr>
 <tr class="even">
 <td align="left">number_of_pinnae</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">2.67</td>
-<td align="right">1.07</td>
-<td align="right">1.0</td>
-<td align="right">2.00</td>
-<td align="right">3.00</td>
-<td align="right">3.25</td>
+<td align="right">3.17</td>
+<td align="right">1.40</td>
+<td align="right">1</td>
+<td align="right">2.0</td>
+<td align="right">3.50</td>
 <td align="right">4.00</td>
-<td align="left">▃▆▁▇▆</td>
+<td align="right">5.00</td>
+<td align="left">▃▃▃▇▃</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="section-2" class="section level3">
+<h3>3</h3>
 <pre class="r"><code>library(ggplot2)
 mickelia_data &lt;- mickelia_spp %&gt;%
   pivot_longer(cols = c(leave_size, petiole_length, lamina_width, number_of_pinnae),
@@ -480,18 +501,40 @@ mickelia_data &lt;- mickelia_spp %&gt;%
        x = &quot;Value&quot;,
        y = &quot;Frequency&quot;)</code></pre>
 <p><img src="Homework6_NZ_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="section-3" class="section level3">
+<h3>4</h3>
+<p>Now write code to analyze the data (probably as an ANOVA or
+regression analysis, but possibly as a logistic regression or
+contingency table analysis. Write code to generate a useful graph of the
+data.</p>
 <pre class="r"><code>manova_result &lt;- manova(cbind(leave_size, petiole_length, lamina_width, number_of_pinnae) ~ habit_id, data = mickelia_spp)
 summary(manova_result)</code></pre>
 <pre><code>##           Df  Pillai approx F num Df den Df Pr(&gt;F)
-## habit_id   2 0.63971  0.82298      8     14  0.596
+## habit_id   2 0.40777  0.44817      8     14 0.8722
 ## Residuals  9</code></pre>
+</div>
+<div id="section-4" class="section level3">
+<h3>5</h3>
 <pre class="r"><code>ggplot(mickelia_spp, aes(x = habit_id, y = leave_size)) +
   geom_boxplot(fill = &quot;lightblue&quot;) +
-  labs(title = &quot;Boxplot de Leave Size por Hábitat&quot;,
+  labs(title = &quot;Boxplot de Leave size por Habit&quot;,
        x = &quot;Habit&quot;,
-       y = &quot;Leaves size&quot;) +
+       y = &quot;Leaf size&quot;) +
   theme_minimal()</code></pre>
 <p><img src="Homework6_NZ_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="section-5" class="section level3">
+<h3>6</h3>
+<p>Now, using a series of for loops, adjust the parameters of your data
+to explore how they might impact your results/analysis, and store the
+results of your for loops into an object so you can view it. For
+example, what happens if you were to start with a small sample size and
+then re-run your analysis? Would you still get a significant result?
+What if you were to increase that sample size by 5, or 10? How small can
+your sample size be before you detect a significant pattern (p &lt;
+0.05)? How small can the differences between the groups be (the “effect
+size”) for you to still detect a significant pattern?</p>
 <pre class="r"><code>results &lt;- data.frame(sample_size = integer(),
                          p_valor = numeric(),
                          efecto_tamano = numeric())
@@ -541,6 +584,7 @@ print(results)</code></pre>
 ## 4          20 0.8016260 0.345779268
 ## 5          25 0.7267583 0.303606847
 ## 6          30 0.4128762 0.558164851</code></pre>
+</div>
 
 
 

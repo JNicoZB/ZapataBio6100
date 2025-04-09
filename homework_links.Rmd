@@ -30,7 +30,8 @@ Homework 6 [Creating Fake Data Sets To Explore Hypotheses](Homework6_NZ.html)
 Homework 7 [Data manipulations using the dplyr package](Homework7_NZ.html) 
 
 
-Homework 8 [Simulating and Fitting Data Distributions](Homework8_NZ) 
+Homework 8 [Simulating and Fitting Data Distributions](Homework8_NZ.html)
+
 
 
 
