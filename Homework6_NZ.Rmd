@@ -10,12 +10,21 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 Homework 6
 
+Fake data set 
+
+I am creating a fake data set based on the difference in leaf morphology of what is believed to be a fern species complex, this species has three growth forms (climbing, terrestrial, rheophytic). My hypothesis is that there are significant changes in leaf morphology and habit that may be different enough to separate the species, or simply confirm that they are the same species with broad adaptation to different environments.
+This will serve to correlate with molecular data, so let's see ....
+
+### 1
 ```{r, eval=TRUE, echo=TRUE}
+#create a fake data set
 library(skimr)
 library(tidyverse)
 
+# 3 types of habit
 habit_id <- c("terrestrial", "climber", "reophytic")
 
+# morphological parameters to consider in leaf 
 leave_size <- c(round(rnorm(12, mean=20)))
 print(leave_size)
 
@@ -30,12 +39,17 @@ print(petiole_length)
 
 ```
 
+### 2
+
 ```{r, eval=TRUE, echo=TRUE}
+# make the data frame
 data.frame(habit_id,leave_size,petiole_length,lamina_width,number_of_pinnae) -> mickelia_spp
 
 view(mickelia_spp)
 skim(mickelia_spp)
 ```
+
+### 3 
 
 ```{r, eval=TRUE, echo=TRUE}
 library(ggplot2)
@@ -56,6 +70,9 @@ ggplot(mickelia_data, aes(x = value, fill = habit_id)) +
        y = "Frequency")
 ```
 
+### 4 
+Now write code to analyze the data (probably as an ANOVA or regression analysis, but possibly as a logistic regression or contingency table analysis. Write code to generate a useful graph of the data.
+
 ```{r, eval=TRUE, echo=TRUE}
 
 manova_result <- manova(cbind(leave_size, petiole_length, lamina_width, number_of_pinnae) ~ habit_id, data = mickelia_spp)
@@ -63,14 +80,18 @@ summary(manova_result)
 
 ```
 
+### 5
 ```{r, eval=TRUE, echo=TRUE}
 ggplot(mickelia_spp, aes(x = habit_id, y = leave_size)) +
   geom_boxplot(fill = "lightblue") +
-  labs(title = "Boxplot de Leave Size por Hábitat",
+  labs(title = "Boxplot de Leave size por Habit",
        x = "Habit",
-       y = "Leaves size") +
+       y = "Leaf size") +
   theme_minimal()
 ```
+
+### 6
+Now, using a series of for loops, adjust the parameters of your data to explore how they might impact your results/analysis, and store the results of your for loops into an object so you can view it. For example, what happens if you were to start with a small sample size and then re-run your analysis? Would you still get a significant result? What if you were to increase that sample size by 5, or 10? How small can your sample size be before you detect a significant pattern (p < 0.05)? How small can the differences between the groups be (the “effect size”) for you to still detect a significant pattern?
 
 ```{r, eval=TRUE, echo=TRUE}
 results <- data.frame(sample_size = integer(),

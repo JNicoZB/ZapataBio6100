@@ -113,6 +113,63 @@ print(results)
 str(results)
 head(results)
 
+
+
+
+
+# Cargar librerías
+library(tidyverse)
+
+# Inicializar un data frame vacío para almacenar resultados
+resultados <- data.frame(tamano_muestra = integer(),
+                         p_valor = numeric(),
+                         detectable = logical())
+
+# Definir parámetros de la distribución gamma
+alpha1 <- 2  # Parámetro de forma para grupo 1
+beta1 <- 3   # Parámetro de escala para grupo 1
+alpha2 <- 3  # Parámetro de forma para grupo 2
+beta2 <- 2   # Parámetro de escala para grupo 2
+
+# Establecer un rango de tamaños de muestra
+num_simulaciones <- 100  # Número de simulaciones para cada tamaño de muestra
+
+for (tamano_muestra in seq(5, 50, by = 5)) {
+  exitos <- 0  # Contador para éxitos en detectar el efecto
+  
+  for (simulacion in 1:num_simulaciones) {
+    set.seed(simulacion)  # Para reproducibilidad en cada simulación
+    
+    # Generar datos desde la distribución gamma para dos grupos
+    grupo1 <- rgamma(tamano_muestra / 2, shape = alpha1, scale = beta1)
+    grupo2 <- rgamma(tamano_muestra / 2, shape = alpha2, scale = beta2)
+    
+    # Crear un data frame
+    habit_id <- rep(c("grupo1", "grupo2"), each = tamano_muestra / 2)
+    leave_size <- c(grupo1, grupo2)
+    mickelia_spp <- data.frame(habit_id, leave_size)
+    
+    # Realizar ANOVA
+    anova_result <- aov(leave_size ~ habit_id, data = mickelia_spp)
+    
+    # Guardar el p-valor
+    p_valor <- summary(anova_result)[[1]]$`Pr(>F)`[1]  # Extraer el p-valor
+    
+    # Verificar si el p-valor es significativo
+    if (p_valor < 0.05) {
+      exitos <- exitos + 1  # Contar ejercicio exitoso
+    }
+  }
+  
+  # Almacenar el resultado del tamaño de muestra y si se detectó el efecto
+  detectable <- exitos > 0  # Al menos un éxito en detectar el efecto
+  resultados <- rbind(resultados, data.frame(tamano_muestra, p_valor = NA, detectable))
+}
+
+# Ver los resultados
+print(resultados)
+
+
 #####
 pairs(mickelia_spp[, c("leave_size", "petiole_length", "lamina_width", "number_of_pinnae")],
       col = as.numeric(factor(mickelia_spp$habit_id)))
