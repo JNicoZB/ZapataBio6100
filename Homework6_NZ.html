@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="NZ" />
+
+<meta name="date" content="2025-02-19" />
+
+<title>Homework6_NZ</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="homework_links.html">Homework Links</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Homework6_NZ</h1>
+<h4 class="author">NZ</h4>
+<h4 class="date">2025-02-19</h4>
+
+</div>
+
+
+<p>Homework 6</p>
+<p>Fake data set</p>
+<p>I am creating a fake data set based on the difference in leaf
+morphology of what is believed to be a fern species complex, this
+species has three growth forms (climbing, terrestrial, rheophytic). My
+hypothesis is that there are significant changes in leaf morphology and
+habit that may be different enough to separate the species, or simply
+confirm that they are the same species with broad adaptation to
+different environments. This will serve to correlate with molecular
+data, so let’s see ….</p>
+<div id="section" class="section level3">
+<h3>1</h3>
+<pre class="r"><code>#create a fake data set
+library(skimr)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ─────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ───────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code># 3 types of habit
+habit_id &lt;- c(&quot;terrestrial&quot;, &quot;climber&quot;, &quot;reophytic&quot;)
+
+# morphological parameters to consider in leaf 
+leave_size &lt;- c(round(rnorm(12, mean=20)))
+print(leave_size)</code></pre>
+<pre><code>##  [1] 23 18 18 20 23 20 19 20 23 19 19 20</code></pre>
+<pre class="r"><code>lamina_width &lt;- c(runif(12, min = 10, max = 16))
+print(lamina_width)</code></pre>
+<pre><code>##  [1] 14.63683 11.25741 14.48874 13.51213 11.94668 12.25028 10.16162 12.90001
+##  [9] 15.82048 10.00237 10.63422 12.63966</code></pre>
+<pre class="r"><code>number_of_pinnae &lt;- c(round(runif(12, min = 1, max = 5)))
+print(number_of_pinnae)</code></pre>
+<pre><code>##  [1] 2 5 3 4 4 4 1 2 3 5 4 1</code></pre>
+<pre class="r"><code>petiole_length &lt;- c(round(rnorm(12, mean=9)))
+print(petiole_length)</code></pre>
+<pre><code>##  [1]  9 10  8  9 10 10  9 10  9 10  8  9</code></pre>
+</div>
+<div id="section-1" class="section level3">
+<h3>2</h3>
+<pre class="r"><code># make the data frame
+data.frame(habit_id,leave_size,petiole_length,lamina_width,number_of_pinnae) -&gt; mickelia_spp
+
+view(mickelia_spp)
+skim(mickelia_spp)</code></pre>
+<table>
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">mickelia_spp</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">12</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="19%" />
+<col width="5%" />
+<col width="5%" />
+<col width="8%" />
+<col width="12%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">habit_id</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table style="width:100%;">
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="16%" />
+<col width="7%" />
+<col width="5%" />
+<col width="3%" />
+<col width="5%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">leave_size</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">20.17</td>
+<td align="right">1.85</td>
+<td align="right">18</td>
+<td align="right">19.0</td>
+<td align="right">20.00</td>
+<td align="right">20.75</td>
+<td align="right">23.00</td>
+<td align="left">▇▆▁▁▅</td>
+</tr>
+<tr class="even">
+<td align="left">petiole_length</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">9.25</td>
+<td align="right">0.75</td>
+<td align="right">8</td>
+<td align="right">9.0</td>
+<td align="right">9.00</td>
+<td align="right">10.00</td>
+<td align="right">10.00</td>
+<td align="left">▃▁▇▁▇</td>
+</tr>
+<tr class="odd">
+<td align="left">lamina_width</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">12.52</td>
+<td align="right">1.85</td>
+<td align="right">10</td>
+<td align="right">11.1</td>
+<td align="right">12.44</td>
+<td align="right">13.76</td>
+<td align="right">15.82</td>
+<td align="left">▇▇▅▇▂</td>
+</tr>
+<tr class="even">
+<td align="left">number_of_pinnae</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3.17</td>
+<td align="right">1.40</td>
+<td align="right">1</td>
+<td align="right">2.0</td>
+<td align="right">3.50</td>
+<td align="right">4.00</td>
+<td align="right">5.00</td>
+<td align="left">▃▃▃▇▃</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-2" class="section level3">
+<h3>3</h3>
+<pre class="r"><code>library(ggplot2)
+mickelia_data &lt;- mickelia_spp %&gt;%
+  pivot_longer(cols = c(leave_size, petiole_length, lamina_width, number_of_pinnae),
+               names_to = &quot;variable&quot;,
+               values_to = &quot;value&quot;)</code></pre>
+<pre class="r"><code>ggplot(mickelia_data, aes(x = value, fill = habit_id)) + 
+  geom_histogram(position = &quot;identity&quot;, bins = 10, alpha = 0.6, color = &quot;black&quot;) +  # Histogramas
+  facet_wrap(~ variable, scales = &quot;free&quot;) +  # Facetas para cada variable
+  theme_minimal() +
+  labs(title = &quot;Leaf morphology in Mickelia nicotianifolia complex&quot;,
+       x = &quot;Value&quot;,
+       y = &quot;Frequency&quot;)</code></pre>
+<p><img src="Homework6_NZ_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="section-3" class="section level3">
+<h3>4</h3>
+<p>Now write code to analyze the data (probably as an ANOVA or
+regression analysis, but possibly as a logistic regression or
+contingency table analysis. Write code to generate a useful graph of the
+data.</p>
+<pre class="r"><code>manova_result &lt;- manova(cbind(leave_size, petiole_length, lamina_width, number_of_pinnae) ~ habit_id, data = mickelia_spp)
+summary(manova_result)</code></pre>
+<pre><code>##           Df  Pillai approx F num Df den Df Pr(&gt;F)
+## habit_id   2 0.40777  0.44817      8     14 0.8722
+## Residuals  9</code></pre>
+</div>
+<div id="section-4" class="section level3">
+<h3>5</h3>
+<pre class="r"><code>ggplot(mickelia_spp, aes(x = habit_id, y = leave_size)) +
+  geom_boxplot(fill = &quot;lightblue&quot;) +
+  labs(title = &quot;Boxplot de Leave size por Habit&quot;,
+       x = &quot;Habit&quot;,
+       y = &quot;Leaf size&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="Homework6_NZ_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="section-5" class="section level3">
+<h3>6</h3>
+<p>Now, using a series of for loops, adjust the parameters of your data
+to explore how they might impact your results/analysis, and store the
+results of your for loops into an object so you can view it. For
+example, what happens if you were to start with a small sample size and
+then re-run your analysis? Would you still get a significant result?
+What if you were to increase that sample size by 5, or 10? How small can
+your sample size be before you detect a significant pattern (p &lt;
+0.05)? How small can the differences between the groups be (the “effect
+size”) for you to still detect a significant pattern?</p>
+<pre class="r"><code>results &lt;- data.frame(sample_size = integer(),
+                         p_valor = numeric(),
+                         efecto_tamano = numeric())
+
+
+
+for (sample_size in seq(5, 30, by = 5)) {
+  # creat data
+  set.seed(123)  
+  habit_id &lt;- rep(c(&quot;terrestrial&quot;, &quot;climber&quot;, &quot;reophytic&quot;), length.out = sample_size)
+  leave_size &lt;- rnorm(sample_size, mean = 20)
+  
+  # creat a data frame
+  mickelia_spp &lt;- data.frame(habit_id, leave_size)
+  
+  # ANOVA
+  anova_result &lt;- aov(leave_size ~ habit_id, data = mickelia_spp)
+  
+  # save p-valor
+  p_valor &lt;- summary(anova_result)[[1]]$`Pr(&gt;F)`[1]  # Extraer el p-valor
+  
+  
+  size_efect &lt;- abs(mean(leave_size[habit_id == &quot;climber&quot;]) - mean(leave_size[habit_id == &quot;terrestrial&quot;]))
+  
+  
+  results &lt;- rbind(results, data.frame(sample_size, p_valor, size_efect))
+}
+ 
+print(results)</code></pre>
+<pre><code>##   sample_size   p_valor  size_efect
+## 1           5 0.1002187 0.194538750
+## 2          10 0.2232001 0.336638742
+## 3          15 0.6079787 0.008551019
+## 4          20 0.8016260 0.345779268
+## 5          25 0.7267583 0.303606847
+## 6          30 0.4128762 0.558164851</code></pre>
+<pre class="r"><code>str(results)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  3 variables:
+##  $ sample_size: num  5 10 15 20 25 30
+##  $ p_valor    : num  0.1 0.223 0.608 0.802 0.727 ...
+##  $ size_efect : num  0.19454 0.33664 0.00855 0.34578 0.30361 ...</code></pre>
+<pre class="r"><code>head(results)</code></pre>
+<pre><code>##   sample_size   p_valor  size_efect
+## 1           5 0.1002187 0.194538750
+## 2          10 0.2232001 0.336638742
+## 3          15 0.6079787 0.008551019
+## 4          20 0.8016260 0.345779268
+## 5          25 0.7267583 0.303606847
+## 6          30 0.4128762 0.558164851</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
