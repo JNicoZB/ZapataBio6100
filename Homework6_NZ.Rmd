@@ -8,23 +8,105 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+Homework 6
 
-## R Markdown
+```{r, eval=TRUE, echo=TRUE}
+library(skimr)
+library(tidyverse)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+habit_id <- c("terrestrial", "climber", "reophytic")
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+leave_size <- c(round(rnorm(12, mean=20)))
+print(leave_size)
 
-```{r cars}
-summary(cars)
+lamina_width <- c(runif(12, min = 10, max = 16))
+print(lamina_width)
+
+number_of_pinnae <- c(round(runif(12, min = 1, max = 5)))
+print(number_of_pinnae)
+
+petiole_length <- c(round(rnorm(12, mean=9)))
+print(petiole_length)
+
 ```
 
-## Including Plots
+```{r, eval=TRUE, echo=TRUE}
+data.frame(habit_id,leave_size,petiole_length,lamina_width,number_of_pinnae) -> mickelia_spp
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+view(mickelia_spp)
+skim(mickelia_spp)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r, eval=TRUE, echo=TRUE}
+library(ggplot2)
+mickelia_data <- mickelia_spp %>%
+  pivot_longer(cols = c(leave_size, petiole_length, lamina_width, number_of_pinnae),
+               names_to = "variable",
+               values_to = "value")
+```
+
+```{r, eval=TRUE, echo=TRUE}
+
+ggplot(mickelia_data, aes(x = value, fill = habit_id)) + 
+  geom_histogram(position = "identity", bins = 10, alpha = 0.6, color = "black") +  # Histogramas
+  facet_wrap(~ variable, scales = "free") +  # Facetas para cada variable
+  theme_minimal() +
+  labs(title = "Leaf morphology in Mickelia nicotianifolia complex",
+       x = "Value",
+       y = "Frequency")
+```
+
+```{r, eval=TRUE, echo=TRUE}
+
+manova_result <- manova(cbind(leave_size, petiole_length, lamina_width, number_of_pinnae) ~ habit_id, data = mickelia_spp)
+summary(manova_result)
+
+```
+
+```{r, eval=TRUE, echo=TRUE}
+ggplot(mickelia_spp, aes(x = habit_id, y = leave_size)) +
+  geom_boxplot(fill = "lightblue") +
+  labs(title = "Boxplot de Leave Size por Hábitat",
+       x = "Habit",
+       y = "Leaves size") +
+  theme_minimal()
+```
+
+```{r, eval=TRUE, echo=TRUE}
+results <- data.frame(sample_size = integer(),
+                         p_valor = numeric(),
+                         efecto_tamano = numeric())
+
+
+
+for (sample_size in seq(5, 30, by = 5)) {
+  # Crear datos simulados
+  set.seed(123)  # Para reproducibilidad
+  habit_id <- rep(c("terrestrial", "climber", "reophytic"), length.out = sample_size)
+  leave_size <- rnorm(sample_size, mean = 20)
+  
+  # Crear un data frame
+  mickelia_spp <- data.frame(habit_id, leave_size)
+  
+  # Realizar ANOVA
+  anova_result <- aov(leave_size ~ habit_id, data = mickelia_spp)
+  
+  # Guardar el p-valor
+  p_valor <- summary(anova_result)[[1]]$`Pr(>F)`[1]  # Extraer el p-valor
+  
+  # Estimar efecto tamaño (diferencia entre medias)
+  size_efect <- abs(mean(leave_size[habit_id == "climber"]) - mean(leave_size[habit_id == "terrestrial"]))
+  
+  # Almacenar resultados
+  results <- rbind(results, data.frame(sample_size, p_valor, size_efect))
+}
+ 
+print(results)
+str(results)
+head(results)
+```
+
+```{r, eval=TRUE, echo=TRUE}
+
+```
+
