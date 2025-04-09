@@ -101,24 +101,24 @@ results <- data.frame(sample_size = integer(),
 
 
 for (sample_size in seq(5, 30, by = 5)) {
-  # Crear datos simulados
-  set.seed(123)  # Para reproducibilidad
+  # creat data
+  set.seed(123)  
   habit_id <- rep(c("terrestrial", "climber", "reophytic"), length.out = sample_size)
   leave_size <- rnorm(sample_size, mean = 20)
   
-  # Crear un data frame
+  # creat a data frame
   mickelia_spp <- data.frame(habit_id, leave_size)
   
-  # Realizar ANOVA
+  # ANOVA
   anova_result <- aov(leave_size ~ habit_id, data = mickelia_spp)
   
-  # Guardar el p-valor
+  # save p-valor
   p_valor <- summary(anova_result)[[1]]$`Pr(>F)`[1]  # Extraer el p-valor
   
-  # Estimar efecto tamaño (diferencia entre medias)
+  
   size_efect <- abs(mean(leave_size[habit_id == "climber"]) - mean(leave_size[habit_id == "terrestrial"]))
   
-  # Almacenar resultados
+  
   results <- rbind(results, data.frame(sample_size, p_valor, size_efect))
 }
  
