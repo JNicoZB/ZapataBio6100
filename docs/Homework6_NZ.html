@@ -542,24 +542,24 @@ size”) for you to still detect a significant pattern?</p>
 
 
 for (sample_size in seq(5, 30, by = 5)) {
-  # Crear datos simulados
-  set.seed(123)  # Para reproducibilidad
+  # creat data
+  set.seed(123)  
   habit_id &lt;- rep(c(&quot;terrestrial&quot;, &quot;climber&quot;, &quot;reophytic&quot;), length.out = sample_size)
   leave_size &lt;- rnorm(sample_size, mean = 20)
   
-  # Crear un data frame
+  # creat a data frame
   mickelia_spp &lt;- data.frame(habit_id, leave_size)
   
-  # Realizar ANOVA
+  # ANOVA
   anova_result &lt;- aov(leave_size ~ habit_id, data = mickelia_spp)
   
-  # Guardar el p-valor
+  # save p-valor
   p_valor &lt;- summary(anova_result)[[1]]$`Pr(&gt;F)`[1]  # Extraer el p-valor
   
-  # Estimar efecto tamaño (diferencia entre medias)
+  
   size_efect &lt;- abs(mean(leave_size[habit_id == &quot;climber&quot;]) - mean(leave_size[habit_id == &quot;terrestrial&quot;]))
   
-  # Almacenar resultados
+  
   results &lt;- rbind(results, data.frame(sample_size, p_valor, size_efect))
 }
  
