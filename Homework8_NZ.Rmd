@@ -32,3 +32,111 @@ p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
 print(p1)
 
 ```
+
+
+```{r, eval=TRUE, echo=TRUE}
+library(MASS)
+
+
+normPars <- fitdistr(z$Leaf_size_cm, "normal")  
+
+print(normPars)
+
+str(normPars)
+
+mean_estimate <- normPars$estimate["mean"]
+print(mean_estimate)  
+```
+
+
+```{r, eval=TRUE, echo=TRUE}
+
+meanML <- normPars$estimate["mean"]  
+sdML <- normPars$estimate["sd"]
+
+p1 <- ggplot(data=z, aes(x=Leaf_size_cm)) + 
+  geom_histogram(aes(y = ..density..), color="grey60", fill="cornsilk", 
+                 size=0.2, bins=30) +  # Usar density aquí
+  labs(title="Leaf morphology Mickelia nicotianifolia", 
+       x="Leaf size (cm)", 
+       y="Density") +  
+  theme_minimal() + 
+  geom_density(aes(y = ..density..), linetype="dotted", size=0.75) + 
+  stat_function(fun = dnorm, 
+                args = list(mean = meanML, sd = sdML), 
+                colour = "red", 
+                size = 1)
+print(p1)
+
+```
+
+
+
+```{r, eval=TRUE, echo=TRUE}
+
+expoPars <- fitdistr(z$Leaf_size_cm, "exponential")  
+rateML <- expoPars$estimate["rate"]  
+
+xval <- seq(0, max(z$Leaf_size_cm, na.rm = TRUE), length.out = length(z$Leaf_size_cm))  
+
+stat2 <- stat_function(fun = dexp, 
+                       args = list(rate = rateML), 
+                       colour = "blue", 
+                       size = 1)
+
+p_combined <- p1 + stat2  
+print(p_combined)
+
+```
+
+
+```{r, eval=TRUE, echo=TRUE}
+min_val <- min(z$Leaf_size_cm)
+max_val <- max(z$Leaf_size_cm)
+
+stat3 <- stat_function(fun = dunif, 
+                       args = list(min = min_val, max = max_val), 
+                       colour = "darkgreen", 
+                       size = 1)
+
+p_final <- p_combined + stat3  
+print(p_final)
+
+```
+
+```{r, eval=TRUE, echo=TRUE}
+
+gammaPars <- fitdistr(z$Leaf_size_cm, "gamma")  
+shapeML <- gammaPars$estimate["shape"]  
+rateML <- gammaPars$estimate["rate"]    
+
+stat4 <- stat_function(fun = dgamma, 
+                       args = list(shape = shapeML, rate = rateML), 
+                       colour = "brown", 
+                       size = 1)
+
+p_final <- p_final + stat4  
+print(p_final)
+
+```
+
+```{r, eval=TRUE, echo=TRUE}
+
+pSpecial <- ggplot(data=z, 
+                   aes(x=Leaf_size_cm/(max(Leaf_size_cm) + 0.1))) +  
+  geom_histogram(aes(y = ..density..), color="grey60", fill="cornsilk", size=0.2, bins=30) +  
+  xlim(c(0,1)) +
+  geom_density(size=0.75, linetype="dotted")  
+
+betaPars <- fitdistr(x=z$Leaf_size_cm/max(z$Leaf_size_cm + 0.1), start=list(shape1=1, shape2=2), "beta")  
+shape1ML <- betaPars$estimate["shape1"]  
+shape2ML <- betaPars$estimate["shape2"]  
+
+statSpecial <- stat_function(fun = dbeta, 
+                             args = list(shape1=shape1ML, shape2=shape2ML), 
+                             colour = "orchid", 
+                             size = 1)
+pSpecial + statSpecial
+
+```
+
