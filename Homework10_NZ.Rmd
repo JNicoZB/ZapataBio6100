@@ -38,6 +38,8 @@ skimr::skim(rolling_stone)
 
 colnames(rolling_stone)
 
+rolling_stone_clean <- na.omit(rolling_stone)
+
 ```
 
 ```{r, eval=TRUE, echo=TRUE}
@@ -87,15 +89,7 @@ combined_plot <- plot_grid(boxplot_plot, violin_plot, labels = "AUTO")
 print(combined_plot)
 ```
 
-```{r, eval=TRUE, echo=TRUE}
 
-genre_counts <- table(rolling_stone_clean$genre)
-
-waffle_plot <- waffle(genre_counts, rows = 5, title = "Album distribution per muscial genre") +
-  theme(plot.title = element_text(size = 16))
-
-print(waffle_plot)
-```
 
 
 
