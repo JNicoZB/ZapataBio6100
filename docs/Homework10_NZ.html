@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="NZ" />
+
+<meta name="date" content="2025-04-09" />
+
+<title>HW_10_NZ</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="homework_links.html">Homework Links</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">HW_10_NZ</h1>
+<h4 class="author">NZ</h4>
+<h4 class="date">2025-04-09</h4>
+
+</div>
+
+
+<p>#Homewrok10</p>
+<p>Advanced ggplotting</p>
+<p>Nicolás Zapata</p>
+<pre class="r"><code># I started by loading the necessary packages 
+library(tidyr)
+library(ggbeeswarm)</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>library(cowplot)
+library(ggridges)
+library(ggplot2)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ─────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ lubridate 1.9.4     ✔ tibble    3.2.1
+## ✔ purrr     1.0.2</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter()    masks stats::filter()
+## ✖ dplyr::lag()       masks stats::lag()
+## ✖ lubridate::stamp() masks cowplot::stamp()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(skimr)</code></pre>
+<pre class="r"><code># I explored the available data. I will use the data from the rolling stone album rankigs.
+
+rolling_stone &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-05-07/rolling_stone.csv&#39;)</code></pre>
+<pre><code>## Rows: 691 Columns: 21
+## ── Column specification ───────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (8): sort_name, clean_name, album, genre, type, spotify_url, artist_gen...
+## dbl (13): rank_2003, rank_2012, rank_2020, differential, release_year, weeks...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>str(rolling_stone)</code></pre>
+<pre><code>## spc_tbl_ [691 × 21] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ sort_name               : chr [1:691] &quot;Sinatra, Frank&quot; &quot;Diddley, Bo&quot; &quot;Presley, Elvis&quot; &quot;Sinatra, Frank&quot; ...
+##  $ clean_name              : chr [1:691] &quot;Frank Sinatra&quot; &quot;Bo Diddley&quot; &quot;Elvis Presley&quot; &quot;Frank Sinatra&quot; ...
+##  $ album                   : chr [1:691] &quot;In the Wee Small Hours&quot; &quot;Bo Diddley / Go Bo Diddley&quot; &quot;Elvis Presley&quot; &quot;Songs for Swingin&#39; Lovers!&quot; ...
+##  $ rank_2003               : num [1:691] 100 214 55 306 50 NA NA 421 NA 12 ...
+##  $ rank_2012               : num [1:691] 101 216 56 308 50 NA 451 420 NA 12 ...
+##  $ rank_2020               : num [1:691] 282 455 332 NA 227 32 33 NA 68 31 ...
+##  $ differential            : num [1:691] -182 -241 -277 -195 -177 469 468 -80 433 -19 ...
+##  $ release_year            : num [1:691] 1955 1955 1956 1956 1957 ...
+##  $ genre                   : chr [1:691] &quot;Big Band/Jazz&quot; &quot;Rock n&#39; Roll/Rhythm &amp; Blues&quot; &quot;Rock n&#39; Roll/Rhythm &amp; Blues&quot; &quot;Big Band/Jazz&quot; ...
+##  $ type                    : chr [1:691] &quot;Studio&quot; &quot;Studio&quot; &quot;Studio&quot; &quot;Studio&quot; ...
+##  $ weeks_on_billboard      : num [1:691] 14 NA 100 NA 5 87 173 NA 27 NA ...
+##  $ peak_billboard_position : num [1:691] 2 201 1 2 13 1 2 201 30 201 ...
+##  $ spotify_popularity      : num [1:691] 48 50 58 62 64 73 67 47 75 52 ...
+##  $ spotify_url             : chr [1:691] &quot;spotify:album:3GmwKB1tgPZgXeRJZSm9WX&quot; &quot;spotify:album:1cbtDEwxCjMhglb49OgNBR&quot; &quot;spotify:album:7GXP5OhYyPVLmcVfO9Iqin&quot; &quot;spotify:album:4kca7vXd1Wo5GE2DMafvMc&quot; ...
+##  $ artist_member_count     : num [1:691] 1 1 1 1 1 1 1 4 1 1 ...
+##  $ artist_gender           : chr [1:691] &quot;Male&quot; &quot;Male&quot; &quot;Male&quot; &quot;Male&quot; ...
+##  $ artist_birth_year_sum   : num [1:691] 1915 1928 1935 1915 1932 ...
+##  $ debut_album_release_year: num [1:691] 1946 1955 1956 1946 1957 ...
+##  $ ave_age_at_top_500      : num [1:691] 40 27 21 41 25 35 23 19 27 33 ...
+##  $ years_between           : num [1:691] 9 0 0 10 0 13 3 0 7 8 ...
+##  $ album_id                : chr [1:691] &quot;3GmwKB1tgPZgXeRJZSm9WX&quot; &quot;1cbtDEwxCjMhglb49OgNBR&quot; &quot;7GXP5OhYyPVLmcVfO9Iqin&quot; &quot;4kca7vXd1Wo5GE2DMafvMc&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   sort_name = col_character(),
+##   ..   clean_name = col_character(),
+##   ..   album = col_character(),
+##   ..   rank_2003 = col_double(),
+##   ..   rank_2012 = col_double(),
+##   ..   rank_2020 = col_double(),
+##   ..   differential = col_double(),
+##   ..   release_year = col_double(),
+##   ..   genre = col_character(),
+##   ..   type = col_character(),
+##   ..   weeks_on_billboard = col_double(),
+##   ..   peak_billboard_position = col_double(),
+##   ..   spotify_popularity = col_double(),
+##   ..   spotify_url = col_character(),
+##   ..   artist_member_count = col_double(),
+##   ..   artist_gender = col_character(),
+##   ..   artist_birth_year_sum = col_double(),
+##   ..   debut_album_release_year = col_double(),
+##   ..   ave_age_at_top_500 = col_double(),
+##   ..   years_between = col_double(),
+##   ..   album_id = col_character()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<pre class="r"><code>head(rolling_stone)</code></pre>
+<pre><code>## # A tibble: 6 × 21
+##   sort_name      clean_name     album rank_2003 rank_2012 rank_2020 differential
+##   &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+## 1 Sinatra, Frank Frank Sinatra  In t…       100       101       282         -182
+## 2 Diddley, Bo    Bo Diddley     Bo D…       214       216       455         -241
+## 3 Presley, Elvis Elvis Presley  Elvi…        55        56       332         -277
+## 4 Sinatra, Frank Frank Sinatra  Song…       306       308        NA         -195
+## 5 Little Richard Little Richard Here…        50        50       227         -177
+## 6 Beyonce        Beyonce        Lemo…        NA        NA        32          469
+## # ℹ 14 more variables: release_year &lt;dbl&gt;, genre &lt;chr&gt;, type &lt;chr&gt;,
+## #   weeks_on_billboard &lt;dbl&gt;, peak_billboard_position &lt;dbl&gt;,
+## #   spotify_popularity &lt;dbl&gt;, spotify_url &lt;chr&gt;, artist_member_count &lt;dbl&gt;,
+## #   artist_gender &lt;chr&gt;, artist_birth_year_sum &lt;dbl&gt;,
+## #   debut_album_release_year &lt;dbl&gt;, ave_age_at_top_500 &lt;dbl&gt;,
+## #   years_between &lt;dbl&gt;, album_id &lt;chr&gt;</code></pre>
+<pre class="r"><code>skimr::skim(rolling_stone) </code></pre>
+<table>
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">rolling_stone</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">691</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">21</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">13</td>
+</tr>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="19%" />
+<col width="5%" />
+<col width="5%" />
+<col width="8%" />
+<col width="12%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">sort_name</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">34</td>
+<td align="right">0</td>
+<td align="right">391</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">clean_name</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">34</td>
+<td align="right">0</td>
+<td align="right">386</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">album</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">69</td>
+<td align="right">0</td>
+<td align="right">685</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">genre</td>
+<td align="right">164</td>
+<td align="right">0.76</td>
+<td align="right">5</td>
+<td align="right">35</td>
+<td align="right">0</td>
+<td align="right">16</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">type</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">4</td>
+<td align="right">13</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">spotify_url</td>
+<td align="right">36</td>
+<td align="right">0.95</td>
+<td align="right">22</td>
+<td align="right">36</td>
+<td align="right">0</td>
+<td align="right">655</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">artist_gender</td>
+<td align="right">5</td>
+<td align="right">0.99</td>
+<td align="right">4</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">album_id</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">6</td>
+<td align="right">22</td>
+<td align="right">0</td>
+<td align="right">691</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="9%" />
+<col width="13%" />
+<col width="7%" />
+<col width="7%" />
+<col width="4%" />
+<col width="7%" />
+<col width="6%" />
+<col width="7%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rank_2003</td>
+<td align="right">191</td>
+<td align="right">0.72</td>
+<td align="right">250.50</td>
+<td align="right">144.49</td>
+<td align="right">1</td>
+<td align="right">125.75</td>
+<td align="right">250.5</td>
+<td align="right">375.25</td>
+<td align="right">500</td>
+<td align="left">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td align="left">rank_2012</td>
+<td align="right">191</td>
+<td align="right">0.72</td>
+<td align="right">250.50</td>
+<td align="right">144.48</td>
+<td align="right">1</td>
+<td align="right">125.75</td>
+<td align="right">250.5</td>
+<td align="right">375.25</td>
+<td align="right">500</td>
+<td align="left">▇▇▇▇▇</td>
+</tr>
+<tr class="odd">
+<td align="left">rank_2020</td>
+<td align="right">191</td>
+<td align="right">0.72</td>
+<td align="right">250.50</td>
+<td align="right">144.48</td>
+<td align="right">1</td>
+<td align="right">125.75</td>
+<td align="right">250.5</td>
+<td align="right">375.25</td>
+<td align="right">500</td>
+<td align="left">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td align="left">differential</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">-12.32</td>
+<td align="right">199.04</td>
+<td align="right">-501</td>
+<td align="right">-137.50</td>
+<td align="right">-8.0</td>
+<td align="right">106.00</td>
+<td align="right">484</td>
+<td align="left">▂▅▇▃▂</td>
+</tr>
+<tr class="odd">
+<td align="left">release_year</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1982.87</td>
+<td align="right">14.55</td>
+<td align="right">1955</td>
+<td align="right">1971.00</td>
+<td align="right">1979.0</td>
+<td align="right">1994.00</td>
+<td align="right">2019</td>
+<td align="left">▂▇▃▃▂</td>
+</tr>
+<tr class="even">
+<td align="left">weeks_on_billboard</td>
+<td align="right">119</td>
+<td align="right">0.83</td>
+<td align="right">64.27</td>
+<td align="right">75.14</td>
+<td align="right">1</td>
+<td align="right">20.75</td>
+<td align="right">44.5</td>
+<td align="right">81.00</td>
+<td align="right">741</td>
+<td align="left">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td align="left">peak_billboard_position</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">61.19</td>
+<td align="right">77.16</td>
+<td align="right">1</td>
+<td align="right">2.00</td>
+<td align="right">17.0</td>
+<td align="right">111.50</td>
+<td align="right">201</td>
+<td align="left">▇▁▁▁▂</td>
+</tr>
+<tr class="even">
+<td align="left">spotify_popularity</td>
+<td align="right">37</td>
+<td align="right">0.95</td>
+<td align="right">55.81</td>
+<td align="right">14.95</td>
+<td align="right">10</td>
+<td align="right">46.00</td>
+<td align="right">57.0</td>
+<td align="right">68.00</td>
+<td align="right">91</td>
+<td align="left">▁▃▇▇▂</td>
+</tr>
+<tr class="odd">
+<td align="left">artist_member_count</td>
+<td align="right">5</td>
+<td align="right">0.99</td>
+<td align="right">2.75</td>
+<td align="right">2.02</td>
+<td align="right">1</td>
+<td align="right">1.00</td>
+<td align="right">2.0</td>
+<td align="right">4.00</td>
+<td align="right">12</td>
+<td align="left">▇▅▁▁▁</td>
+</tr>
+<tr class="even">
+<td align="left">artist_birth_year_sum</td>
+<td align="right">5</td>
+<td align="right">0.99</td>
+<td align="right">5363.21</td>
+<td align="right">3947.13</td>
+<td align="right">1910</td>
+<td align="right">1948.00</td>
+<td align="right">3896.0</td>
+<td align="right">7845.00</td>
+<td align="right">23368</td>
+<td align="left">▇▅▁▁▁</td>
+</tr>
+<tr class="odd">
+<td align="left">debut_album_release_year</td>
+<td align="right">5</td>
+<td align="right">0.99</td>
+<td align="right">1976.87</td>
+<td align="right">14.96</td>
+<td align="right">1934</td>
+<td align="right">1966.25</td>
+<td align="right">1973.0</td>
+<td align="right">1989.00</td>
+<td align="right">2019</td>
+<td align="left">▁▇▇▅▂</td>
+</tr>
+<tr class="even">
+<td align="left">ave_age_at_top_500</td>
+<td align="right">5</td>
+<td align="right">0.99</td>
+<td align="right">29.61</td>
+<td align="right">9.35</td>
+<td align="right">17</td>
+<td align="right">24.04</td>
+<td align="right">27.0</td>
+<td align="right">31.00</td>
+<td align="right">88</td>
+<td align="left">▇▂▁▁▁</td>
+</tr>
+<tr class="odd">
+<td align="left">years_between</td>
+<td align="right">5</td>
+<td align="right">0.99</td>
+<td align="right">5.93</td>
+<td align="right">8.42</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">3.0</td>
+<td align="right">7.00</td>
+<td align="right">54</td>
+<td align="left">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Check the data, especially the column names.
+
+colnames(rolling_stone)</code></pre>
+<pre><code>##  [1] &quot;sort_name&quot;                &quot;clean_name&quot;              
+##  [3] &quot;album&quot;                    &quot;rank_2003&quot;               
+##  [5] &quot;rank_2012&quot;                &quot;rank_2020&quot;               
+##  [7] &quot;differential&quot;             &quot;release_year&quot;            
+##  [9] &quot;genre&quot;                    &quot;type&quot;                    
+## [11] &quot;weeks_on_billboard&quot;       &quot;peak_billboard_position&quot; 
+## [13] &quot;spotify_popularity&quot;       &quot;spotify_url&quot;             
+## [15] &quot;artist_member_count&quot;      &quot;artist_gender&quot;           
+## [17] &quot;artist_birth_year_sum&quot;    &quot;debut_album_release_year&quot;
+## [19] &quot;ave_age_at_top_500&quot;       &quot;years_between&quot;           
+## [21] &quot;album_id&quot;</code></pre>
+<pre class="r"><code>rolling_stone_clean &lt;- na.omit(rolling_stone)</code></pre>
+<pre class="r"><code># I tested different graphs
+
+boxplot_plot &lt;- ggplot(rolling_stone_clean, aes(x = genre, y = rank_2020, fill = genre)) +
+  geom_boxplot(outlier.colour = &quot;red&quot;, outlier.size = 2, alpha = 0.6) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) +
+  theme_minimal() +
+  labs(title = &quot;Ranking album (2020)&quot;,
+       x = &quot;Genre&quot;,
+       y = &quot;Ranking&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(boxplot_plot)</code></pre>
+<pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
+## Returning the palette you asked for with that many colors</code></pre>
+<p><img src="Homework10_NZ_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>violin_plot &lt;- ggplot(rolling_stone_clean, aes(x = genre, y = rank_2020, fill = genre)) +
+  geom_violin(alpha = 0.6) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) +
+  theme_minimal() +
+  labs(title = &quot;Ranking album (2020)&quot;,
+       x = &quot;Genre&quot;,
+       y = &quot;Ranking&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(violin_plot)</code></pre>
+<pre><code>## Warning: Groups with fewer than two datapoints have been dropped.
+## ℹ Set `drop = FALSE` to consider such groups for position
+##   adjustment purposes.</code></pre>
+<pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
+## Returning the palette you asked for with that many colors</code></pre>
+<p><img src="Homework10_NZ_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>library(ggridges)
+ridgeline_plot &lt;- ggplot(rolling_stone_clean, aes(y = genre, x = rank_2020, fill = genre)) +
+  geom_density_ridges(alpha = 0.6) +
+  scale_fill_brewer(palette = &quot;Set2&quot;) +
+  theme_minimal() +
+  labs(title = &quot;Ranking album (2020)&quot;,
+       x = &quot;Ranking&quot;,
+       y = &quot;Genre&quot;) +
+  theme(axis.text.y = element_text(size = 8))
+
+print(ridgeline_plot)</code></pre>
+<pre><code>## Picking joint bandwidth of 59.4</code></pre>
+<pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
+## Returning the palette you asked for with that many colors</code></pre>
+<p><img src="Homework10_NZ_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>combined_plot &lt;- plot_grid(boxplot_plot, violin_plot, labels = &quot;AUTO&quot;)</code></pre>
+<pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
+## Returning the palette you asked for with that many colors</code></pre>
+<pre><code>## Warning: Groups with fewer than two datapoints have been dropped.
+## ℹ Set `drop = FALSE` to consider such groups for position
+##   adjustment purposes.</code></pre>
+<pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
+## Returning the palette you asked for with that many colors</code></pre>
+<pre class="r"><code>print(combined_plot)</code></pre>
+<p><img src="Homework10_NZ_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
