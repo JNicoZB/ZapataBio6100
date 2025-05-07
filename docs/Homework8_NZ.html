@@ -333,6 +333,110 @@ p1 &lt;- ggplot(data=z, aes(x=Leaf_size_cm, y=..density..)) +
 print(p1)</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code>library(MASS)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<pre class="r"><code>normPars &lt;- fitdistr(z$Leaf_size_cm, &quot;normal&quot;)  
+
+print(normPars)</code></pre>
+<pre><code>##       mean          sd    
+##   18.1666667    3.4084046 
+##  ( 0.9839217) ( 0.6957377)</code></pre>
+<pre class="r"><code>str(normPars)</code></pre>
+<pre><code>## List of 5
+##  $ estimate: Named num [1:2] 18.17 3.41
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##  $ sd      : Named num [1:2] 0.984 0.696
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##  $ vcov    : num [1:2, 1:2] 0.968 0 0 0.484
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##   .. ..$ : chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##  $ n       : int 12
+##  $ loglik  : num -31.7
+##  - attr(*, &quot;class&quot;)= chr &quot;fitdistr&quot;</code></pre>
+<pre class="r"><code>mean_estimate &lt;- normPars$estimate[&quot;mean&quot;]
+print(mean_estimate)  </code></pre>
+<pre><code>##     mean 
+## 18.16667</code></pre>
+<pre class="r"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]  
+sdML &lt;- normPars$estimate[&quot;sd&quot;]
+
+p1 &lt;- ggplot(data=z, aes(x=Leaf_size_cm)) + 
+  geom_histogram(aes(y = ..density..), color=&quot;grey60&quot;, fill=&quot;cornsilk&quot;, 
+                 size=0.2, bins=30) +  # Usar density aquí
+  labs(title=&quot;Leaf morphology Mickelia nicotianifolia&quot;, 
+       x=&quot;Leaf size (cm)&quot;, 
+       y=&quot;Density&quot;) +  
+  theme_minimal() + 
+  geom_density(aes(y = ..density..), linetype=&quot;dotted&quot;, size=0.75) + 
+  stat_function(fun = dnorm, 
+                args = list(mean = meanML, sd = sdML), 
+                colour = &quot;red&quot;, 
+                size = 1)
+print(p1)</code></pre>
+<p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>expoPars &lt;- fitdistr(z$Leaf_size_cm, &quot;exponential&quot;)  
+rateML &lt;- expoPars$estimate[&quot;rate&quot;]  
+
+xval &lt;- seq(0, max(z$Leaf_size_cm, na.rm = TRUE), length.out = length(z$Leaf_size_cm))  
+
+stat2 &lt;- stat_function(fun = dexp, 
+                       args = list(rate = rateML), 
+                       colour = &quot;blue&quot;, 
+                       size = 1)
+
+p_combined &lt;- p1 + stat2  
+print(p_combined)</code></pre>
+<p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>min_val &lt;- min(z$Leaf_size_cm)
+max_val &lt;- max(z$Leaf_size_cm)
+
+stat3 &lt;- stat_function(fun = dunif, 
+                       args = list(min = min_val, max = max_val), 
+                       colour = &quot;darkgreen&quot;, 
+                       size = 1)
+
+p_final &lt;- p_combined + stat3  
+print(p_final)</code></pre>
+<p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>gammaPars &lt;- fitdistr(z$Leaf_size_cm, &quot;gamma&quot;)  
+shapeML &lt;- gammaPars$estimate[&quot;shape&quot;]  
+rateML &lt;- gammaPars$estimate[&quot;rate&quot;]    
+
+stat4 &lt;- stat_function(fun = dgamma, 
+                       args = list(shape = shapeML, rate = rateML), 
+                       colour = &quot;brown&quot;, 
+                       size = 1)
+
+p_final &lt;- p_final + stat4  
+print(p_final)</code></pre>
+<p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>pSpecial &lt;- ggplot(data=z, 
+                   aes(x=Leaf_size_cm/(max(Leaf_size_cm) + 0.1))) +  
+  geom_histogram(aes(y = ..density..), color=&quot;grey60&quot;, fill=&quot;cornsilk&quot;, size=0.2, bins=30) +  
+  xlim(c(0,1)) +
+  geom_density(size=0.75, linetype=&quot;dotted&quot;)  
+
+betaPars &lt;- fitdistr(x=z$Leaf_size_cm/max(z$Leaf_size_cm + 0.1), start=list(shape1=1, shape2=2), &quot;beta&quot;)  </code></pre>
+<pre><code>## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
+## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
+## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
+## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced</code></pre>
+<pre class="r"><code>shape1ML &lt;- betaPars$estimate[&quot;shape1&quot;]  
+shape2ML &lt;- betaPars$estimate[&quot;shape2&quot;]  
+
+statSpecial &lt;- stat_function(fun = dbeta, 
+                             args = list(shape1=shape1ML, shape2=shape2ML), 
+                             colour = &quot;orchid&quot;, 
+                             size = 1)
+pSpecial + statSpecial</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
+<p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 
 
 

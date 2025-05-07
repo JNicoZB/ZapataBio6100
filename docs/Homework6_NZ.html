@@ -287,13 +287,13 @@ data, so let’s see ….</p>
 <pre class="r"><code>#create a fake data set
 library(skimr)
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ────────────────────── tidyverse 2.0.0 ──
+<pre><code>## ── Attaching core tidyverse packages ─────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 ## ✔ purrr     1.0.2     
-## ── Conflicts ──────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
@@ -303,17 +303,17 @@ habit_id &lt;- c(&quot;terrestrial&quot;, &quot;climber&quot;, &quot;reophytic&q
 # morphological parameters to consider in leaf 
 leave_size &lt;- c(round(rnorm(12, mean=20)))
 print(leave_size)</code></pre>
-<pre><code>##  [1] 23 18 18 20 23 20 19 20 23 19 19 20</code></pre>
+<pre><code>##  [1] 19 18 21 21 20 19 21 19 21 20 20 19</code></pre>
 <pre class="r"><code>lamina_width &lt;- c(runif(12, min = 10, max = 16))
 print(lamina_width)</code></pre>
-<pre><code>##  [1] 14.63683 11.25741 14.48874 13.51213 11.94668 12.25028 10.16162 12.90001
-##  [9] 15.82048 10.00237 10.63422 12.63966</code></pre>
+<pre><code>##  [1] 14.19877 12.35065 14.74661 10.63283 14.51120 13.19714 14.27334 12.02849
+##  [9] 10.36805 11.85648 12.89157 13.26675</code></pre>
 <pre class="r"><code>number_of_pinnae &lt;- c(round(runif(12, min = 1, max = 5)))
 print(number_of_pinnae)</code></pre>
-<pre><code>##  [1] 2 5 3 4 4 4 1 2 3 5 4 1</code></pre>
+<pre><code>##  [1] 5 2 3 4 2 2 5 5 2 3 3 5</code></pre>
 <pre class="r"><code>petiole_length &lt;- c(round(rnorm(12, mean=9)))
 print(petiole_length)</code></pre>
-<pre><code>##  [1]  9 10  8  9 10 10  9 10  9 10  8  9</code></pre>
+<pre><code>##  [1] 10 10  9  9  9  9  8 10 10 11  8 10</code></pre>
 </div>
 <div id="section-1" class="section level3">
 <h3>2</h3>
@@ -403,17 +403,17 @@ skim(mickelia_spp)</code></pre>
 <p><strong>Variable type: numeric</strong></p>
 <table style="width:100%;">
 <colgroup>
-<col width="20%" />
+<col width="19%" />
 <col width="11%" />
-<col width="16%" />
-<col width="7%" />
+<col width="15%" />
+<col width="6%" />
 <col width="5%" />
-<col width="3%" />
-<col width="5%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -435,53 +435,53 @@ skim(mickelia_spp)</code></pre>
 <td align="left">leave_size</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">20.17</td>
-<td align="right">1.85</td>
-<td align="right">18</td>
-<td align="right">19.0</td>
+<td align="right">19.83</td>
+<td align="right">1.03</td>
+<td align="right">18.00</td>
+<td align="right">19.00</td>
 <td align="right">20.00</td>
-<td align="right">20.75</td>
-<td align="right">23.00</td>
-<td align="left">▇▆▁▁▅</td>
+<td align="right">21.00</td>
+<td align="right">21.00</td>
+<td align="left">▂▇▁▆▇</td>
 </tr>
 <tr class="even">
 <td align="left">petiole_length</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">9.25</td>
-<td align="right">0.75</td>
-<td align="right">8</td>
-<td align="right">9.0</td>
+<td align="right">9.42</td>
+<td align="right">0.90</td>
+<td align="right">8.00</td>
 <td align="right">9.00</td>
+<td align="right">9.50</td>
 <td align="right">10.00</td>
-<td align="right">10.00</td>
-<td align="left">▃▁▇▁▇</td>
+<td align="right">11.00</td>
+<td align="left">▃▆▁▇▂</td>
 </tr>
 <tr class="odd">
 <td align="left">lamina_width</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">12.52</td>
-<td align="right">1.85</td>
-<td align="right">10</td>
-<td align="right">11.1</td>
-<td align="right">12.44</td>
-<td align="right">13.76</td>
-<td align="right">15.82</td>
-<td align="left">▇▇▅▇▂</td>
+<td align="right">12.86</td>
+<td align="right">1.46</td>
+<td align="right">10.37</td>
+<td align="right">11.99</td>
+<td align="right">13.04</td>
+<td align="right">14.22</td>
+<td align="right">14.75</td>
+<td align="left">▃▃▃▃▇</td>
 </tr>
 <tr class="even">
 <td align="left">number_of_pinnae</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">3.17</td>
-<td align="right">1.40</td>
-<td align="right">1</td>
-<td align="right">2.0</td>
-<td align="right">3.50</td>
-<td align="right">4.00</td>
+<td align="right">3.42</td>
+<td align="right">1.31</td>
+<td align="right">2.00</td>
+<td align="right">2.00</td>
+<td align="right">3.00</td>
 <td align="right">5.00</td>
-<td align="left">▃▃▃▇▃</td>
+<td align="right">5.00</td>
+<td align="left">▇▆▁▂▇</td>
 </tr>
 </tbody>
 </table>
@@ -510,8 +510,8 @@ contingency table analysis. Write code to generate a useful graph of the
 data.</p>
 <pre class="r"><code>manova_result &lt;- manova(cbind(leave_size, petiole_length, lamina_width, number_of_pinnae) ~ habit_id, data = mickelia_spp)
 summary(manova_result)</code></pre>
-<pre><code>##           Df  Pillai approx F num Df den Df Pr(&gt;F)
-## habit_id   2 0.40777  0.44817      8     14 0.8722
+<pre><code>##           Df Pillai approx F num Df den Df Pr(&gt;F)
+## habit_id   2 0.5535  0.66963      8     14 0.7104
 ## Residuals  9</code></pre>
 </div>
 <div id="section-4" class="section level3">
