@@ -32,11 +32,14 @@ Homework 7 [Data manipulations using the dplyr package](Homework7_NZ.html)
 
 Homework 8 [Simulating and Fitting Data Distributions](Homework8_NZ.html)
 
+Homework 9 [Strategic Coding Practices](No) 
 
-Homework 9 [S] 
+Homework 10 [Advanced ggploting](Homework10_NZ.html)
 
 
-Homework 10 [Advanced ggploting] (Homework10_NZ.html)
+
+
+
 
 
 
