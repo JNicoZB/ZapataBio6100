@@ -319,14 +319,15 @@ p1 &lt;- ggplot(data=z, aes(x=Leaf_size_cm, y=..density..)) +
 <pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this
+## warning was generated.</code></pre>
 <pre class="r"><code>print(p1)  </code></pre>
-<pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
+<pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2
+## 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this
+## warning was generated.</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <pre class="r"><code>p1 &lt;-  p1 +  geom_density(linetype=&quot;dotted&quot;,size=0.75)
@@ -434,8 +435,8 @@ statSpecial &lt;- stat_function(fun = dbeta,
                              colour = &quot;orchid&quot;, 
                              size = 1)
 pSpecial + statSpecial</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range
-## (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values or values outside the
+## scale range (`geom_bar()`).</code></pre>
 <p><img src="Homework8_NZ_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 
 
