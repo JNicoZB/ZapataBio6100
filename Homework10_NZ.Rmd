@@ -88,9 +88,6 @@ print(combined_plot)
 ```
 
 ```{r, eval=TRUE, echo=TRUE}
-install.packages("waffle")
-
-library(waffle)
 
 genre_counts <- table(rolling_stone_clean$genre)
 
